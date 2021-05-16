@@ -1,0 +1,182 @@
+@font-face {
+  font-family: "roboto";
+  src: url(../fonts/RobotoCondensed-Regular.ttf);
+}
+
+* {
+  font-family: "roboto";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.mt-7 {
+  margin-top: 70px;
+}
+
+.h20vh {
+  max-height: 20vh;
+}
+
+.h90vh img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4b4a4a;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 999;
+}
+
+.header__left-side {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+}
+
+.header__left-side .logo {
+  display: flex;
+  justify-content: space-between;
+  width: 160px;
+  margin: 0 20px;
+}
+
+.header__left-side .logo button {
+  display: none;
+  width: 50px;
+}
+
+.header__left-side .logo img {
+  width: 100px;
+}
+
+.menu {
+  display: flex;
+  width: 300px;
+  align-items: center;
+  font-size: 1.2rem;
+  list-style: none;
+  margin: auto;
+}
+
+.menu li {
+  margin: 20px;
+}
+
+.menu li a {
+  text-decoration: none;
+}
+
+.header__right-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.header__right-side input,
+button {
+  border: none;
+  padding: 0 10px;
+  height: 40px;
+}
+
+.header__right-side button:focus,
+input:focus {
+  outline: none;
+}
+
+.header__right-side button {
+  cursor: pointer;
+  transition: 1s;
+}
+
+.header__right-side button:hover {
+  background-color: #2895a9;
+  color: #fff;
+}
+
+.active {
+  color: #2895a9 !important;
+}
+
+#menu-visible {
+  display: flex;
+}
+
+.slider-caption {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 60%;
+  transform: translateX(-15%);
+  background-color: #a93b28af;
+  font-size: 0.5rem;
+  width: 100%;
+  height: 100%;
+}
+
+.slider-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+  .header__left-side .logo button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    background-color: transparent;
+  }
+
+  .header__left-side .logo button img {
+    width: 100%;
+  }
+
+  .menu {
+    position: absolute;
+    width: 100%;
+    top: 70px;
+    display: none;
+    flex-direction: column;
+    background-color: #4b4a4a;
+  }
+  .header__left-side #menu-hidden {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header__right-side input {
+    width: 150px;
+    font-size: 0.9rem;
+  }
+  .header__right-side button {
+    width: 90px;
+  }
+  .header__left-side .logo {
+    width: 40px;
+  }
+  .header__left-side .logo .image {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 346px) {
+  .header__right-side input {
+    width: 100px;
+    font-size: 0.9rem;
+  }
+}
