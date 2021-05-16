@@ -1,11 +1,17 @@
-import { MainContainer, ShowMore, StyledSection } from "./styles/Section.style";
+import {
+  MainContainer,
+  ViewMore,
+  StyledSection,
+  ViewLess,
+} from "./styles/Section.style";
 
-const Section = ({ title, children }) => {
+const Section = ({ title, viewMore, viewLess, children }) => {
   return (
     <MainContainer>
       <h4>{title}</h4>
       <StyledSection>{children}</StyledSection>
-      <ShowMore>Voir plus</ShowMore>
+      <ViewLess onClick={viewLess}>Voir moins</ViewLess>
+      <ViewMore onClick={viewMore}>Voir plus</ViewMore>
     </MainContainer>
   );
 };

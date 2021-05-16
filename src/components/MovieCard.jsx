@@ -1,7 +1,8 @@
 import Link from "./Link";
+import Note from "./Note";
 import { Body, CardContainer, Header } from "./styles/MovieCard.style";
 
-const MovieCard = ({ title, vote_average, poster_path, imageUrl }) => {
+const MovieCard = ({ title, vote_average, poster_path, release_date, imageUrl }) => {
   return (
     <CardContainer>
       <Header>
@@ -9,7 +10,8 @@ const MovieCard = ({ title, vote_average, poster_path, imageUrl }) => {
       </Header>
       <Body>
         <h6>{title}</h6>
-        <span>{vote_average}</span>
+        <p>{release_date}</p>
+        <Note percent={Math.round(vote_average * 10)} />
         <Link url="/search">Plus d'info</Link>
       </Body>
     </CardContainer>

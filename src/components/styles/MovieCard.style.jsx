@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "../../theme";
 
-const { light, basic, secondary, dark } = theme;
+const { light, basic, secondary, primary, dark } = theme;
 
 export const CardContainer = styled.div`
   position: relative;
@@ -11,16 +11,17 @@ export const CardContainer = styled.div`
   border: solid 2px ${secondary};
   border-radius: 20px 0 20px 0;
   margin-bottom: 20px;
-  overflow: hidden;
+  box-sizing: content-box;
 `;
 
 export const Header = styled.div`
   width: 100%;
   height: 300px;
-  max-height: 200px;
+  max-height: 300px;
   img {
     width: 100%;
     height: 300px;
+    border-radius: 18px 0 0 0;
     object-fit: cover;
   }
 `;
@@ -31,20 +32,22 @@ export const Body = styled.div`
   width: 100%;
   padding: 10px;
   background-color: ${light};
+  h6 {
+    font-weight: bold;
+  }
   a {
     position: relative;
-    top: 20px;
     left: 100px;
     width: 50px;
     height: 40px;
     padding: 10px;
-    background-color: ${basic};
-    color: ${dark};
+    background-color: ${primary};
     text-decoration: none;
     transition: 1s;
-    margin: 10px;
+    margin: 20px;
+    color: ${light};
     &:hover {
-      color: ${light};
+      color: ${dark};
     }
   }
 `;
