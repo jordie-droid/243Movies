@@ -39,3 +39,19 @@ export const useMovies = (currentPage, url) => {
 
   return [moviesData];
 };
+
+export const useView = (defaultLimit, table) => {
+  const [limit, setLimit] = useState(defaultLimit);
+
+  const viewLess = () => {
+    setLimit((prevValue) => prevValue - 5);
+    limit < table.length && setLimit(5);
+  };
+
+  const viewMore = () => {
+    setLimit((prevValue) => prevValue + 5);
+    limit > table.length && setLimit(table.length);
+  };
+
+  return [viewLess, viewMore, limit];
+};

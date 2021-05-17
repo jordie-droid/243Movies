@@ -1,41 +1,42 @@
-import { useState } from "react";
-import { moviesApi } from "../api/api";
+import { moviesApi, seriesApi } from "../api/api";
 import FadeCarousel from "../components/Carousel";
 import MovieCard from "../components/MovieCard";
-import Section from "../components/Section";
-import { useMovies } from "../hooks/personalHooks";
+import SectionView from "../components/SectionView";
+import { useMovies, useView } from "../hooks/personalHooks";
 
 const Home = ({ imageUrl }) => {
-  const { popular } = moviesApi;
+  const { popular: popularMovies } = moviesApi;
+  const { popular: popularSeries } = seriesApi;
 
-  const [data] = useMovies(1, popular);
-  const [limit, setLimit] = useState(5);
-  let results = [];
-  if (data) {
-    results = data.results;
-    console.log(results);
+  const [popularMoviesData] = useMovies(1, popularMovies);
+  const [popularSeriesData] = useMovies(1, popularSeries);
+
+  let popularMoviesResults = [],
+    popularSeriesResults = [];
+    
+  if (popularMoviesData) {
+    popularMoviesResults = popularMoviesData.results;
   }
 
-  const viewMore = () => {
-    setLimit((prevValue) => prevValue + 5);
-    limit > results.length && setLimit(results.length);
-  };
+  if (popularSeriesData) {
+    popularSeriesResults = popularSeriesData.results;
+  }
 
-  const viewLess = () => {
-    setLimit((prevValue) => prevValue - 5);
-    limit < results.length && setLimit(5);
-  };
+  const [popularMoviesViewLess, popularMoviesViewMore, popularMoviesLimit] =
+    useView(5, popularMoviesResults);
+  const [popularSeriesViewLess, popularSeriesViewMore, popularSeriesLimit] =
+    useView(5, popularSeriesResults);
 
   return (
     <>
       <FadeCarousel imageUrl={imageUrl} />
-      <Section
+      <SectionView
         title="Top 20 des films les plus populaires"
-        viewMore={viewMore}
-        viewLess={viewLess}
+        viewMore={popularMoviesViewMore}
+        viewLess={popularMoviesViewLess}
       >
-        {results
-          .slice(0, limit)
+        {popularMoviesResults
+          .slice(0, popularMoviesLimit)
           .map(({ title, vote_average, poster_path, release_date }, index) => {
             return (
               <MovieCard
@@ -48,7 +49,27 @@ const Home = ({ imageUrl }) => {
               />
             );
           })}
-      </Section>
+      </SectionView>
+      <SectionView
+        title="Top 20 des séries les plus populaires"
+        viewMore={popularSeriesViewMore}
+        viewLess={popularSeriesViewLess}
+      >
+        {popularSeriesResults
+          .slice(0, popularSeriesLimit)
+          .map(({ name, vote_average, poster_path, first_air_date }, index) => {
+            return (
+              <MovieCard
+                title={name}
+                vote_average={vote_average}
+                poster_path={poster_path}
+                release_date={first_air_date}
+                key={index}
+                imageUrl={imageUrl}
+              />
+            );
+          })}
+      </SectionView>
     </>
   );
 };

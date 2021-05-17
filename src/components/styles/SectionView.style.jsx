@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "../../theme";
 
-const { basic, primary, dark } = theme;
+const { basic, dark } = theme;
 
 export const StyledSection = styled.section`
   display: flex;
@@ -25,29 +25,21 @@ export const MainContainer = styled.div`
   }
 `;
 
-export const ViewMore = styled.button`
-  border: none;
-  background-color: ${basic};
-  width: 100px;
-  height: 50px;
-  position: relative;
-  left: 50%;
-  transform: translateX(-40%);
-  transition: 1s;
-  &:hover {
-    color: ${primary};
-  }
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
-export const ViewLess = styled.button`
+export const ViewButton = styled.button`
   border: none;
   background-color: ${basic};
-  width: 100px;
+  width: 50px;
   height: 50px;
-  position: relative;
-  left: 40%;
-  transform: translateX(-50%);
+  transition: 1s;
+  margin: 20px;
+  border-radius: 5px;
   &:hover {
-    color: ${primary};
+    background-color: ${dark};
   }
 `;

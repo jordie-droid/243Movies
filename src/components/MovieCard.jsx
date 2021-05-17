@@ -1,8 +1,19 @@
 import Link from "./Link";
 import Note from "./Note";
-import { Body, CardContainer, Header } from "./styles/MovieCard.style";
+import {
+  Body,
+  CardContainer,
+  Header,
+  OverView,
+} from "./styles/MovieCard.style";
 
-const MovieCard = ({ title, vote_average, poster_path, release_date, imageUrl }) => {
+const MovieCard = ({
+  title,
+  vote_average,
+  poster_path,
+  release_date,
+  imageUrl,
+}) => {
   return (
     <CardContainer>
       <Header>
