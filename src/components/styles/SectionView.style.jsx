@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "../../theme";
 
-const { basic, dark } = theme;
+const { primary, dark } = theme;
 
 export const StyledSection = styled.section`
   display: flex;
@@ -33,13 +33,10 @@ export const ButtonContainer = styled.div`
 
 export const ViewButton = styled.button`
   border: none;
-  background-color: ${basic};
+  background-color: ${primary};
   width: 50px;
   height: 50px;
   transition: 1s;
-  margin: 20px;
+  margin: 20px 20px 0;
   border-radius: 5px;
-  &:hover {
-    background-color: ${dark};
-  }
 `;

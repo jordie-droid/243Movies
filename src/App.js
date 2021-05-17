@@ -1,19 +1,29 @@
-import { usePage } from "./hooks/personalHooks";
 import Header from "./components/Header";
 import "./css/index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
+import { BrowserRouter, Route } from "react-router-dom";
 
 const App = () => {
-  const imageUrl = "https://image.tmdb.org/t/p/w1280";
-  const [currentPage, prevPage, nextPage] = usePage(1, 10);
+  // const [currentPage, prevPage, nextPage] = usePage(1, 10);
+
+  //     <p>current page : {currentPage()} </p>
+  //     <button onClick={prevPage}>prev</button>
+  //     <button onClick={nextPage}>next</button>
   return (
     <>
-      <Header />
-      <Home imageUrl={imageUrl} />
-      <p>current page : {currentPage()} </p>
-      <button onClick={prevPage}>prev</button>
-      <button onClick={nextPage}>next</button>
+      <BrowserRouter>
+        <Header />
+        <Route
+          exact
+          path="/"
+          component={() => (
+            <Home imageUrl={"https://image.tmdb.org/t/p/w1280"} />
+          )}
+        />
+        <Footer />
+      </BrowserRouter>
     </>
   );
 };

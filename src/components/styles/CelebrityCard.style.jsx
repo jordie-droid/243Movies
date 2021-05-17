@@ -33,6 +33,7 @@ export const Body = styled.div`
   background-color: ${light};
   h6 {
     font-weight: bold;
+    margin-bottom: 20px;
   }
   a {
     position: relative;

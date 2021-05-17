@@ -23,6 +23,22 @@ export const usePage = (defaultValue, pagesNumber) => {
   return [getPage, prevPage, nextPage];
 };
 
+export const useView = (defaultLimit, table) => {
+  const [limit, setLimit] = useState(defaultLimit);
+
+  const viewLess = () => {
+    setLimit((prevValue) => prevValue - 5);
+    limit < table.length && setLimit(5);
+  };
+
+  const viewMore = () => {
+    setLimit((prevValue) => prevValue + 5);
+    limit > table.length && setLimit(table.length);
+  };
+
+  return [viewLess, viewMore, limit];
+};
+
 export const useMovies = (currentPage, url) => {
   const [moviesUrl] = useState(`${url}${currentPage}`);
   const [moviesData, setMoviesData] = useState();
@@ -40,18 +56,19 @@ export const useMovies = (currentPage, url) => {
   return [moviesData];
 };
 
-export const useView = (defaultLimit, table) => {
-  const [limit, setLimit] = useState(defaultLimit);
+export const useCelebrities = (currentPage, url) => {
+  const [celebritiesUrl] = useState(`${url}${currentPage}`);
+  const [celebritiesData, setCelebritiesData] = useState();
 
-  const viewLess = () => {
-    setLimit((prevValue) => prevValue - 5);
-    limit < table.length && setLimit(5);
+  const fetchMovies = async () => {
+    const response = await fetch(celebritiesUrl);
+    const data = await response.json();
+    setCelebritiesData(data);
   };
 
-  const viewMore = () => {
-    setLimit((prevValue) => prevValue + 5);
-    limit > table.length && setLimit(table.length);
-  };
+  useEffect(() => {
+    fetchMovies();
+  }, [celebritiesUrl]);
 
-  return [viewLess, viewMore, limit];
+  return [celebritiesData];
 };

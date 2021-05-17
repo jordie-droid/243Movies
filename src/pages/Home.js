@@ -1,19 +1,23 @@
-import { moviesApi, seriesApi } from "../api/api";
+import { celebritiesApi, moviesApi, seriesApi } from "../api/api";
 import FadeCarousel from "../components/Carousel";
+import CelebrityCard from "../components/CelebrityCard";
 import MovieCard from "../components/MovieCard";
 import SectionView from "../components/SectionView";
-import { useMovies, useView } from "../hooks/personalHooks";
+import { useCelebrities, useMovies, useView } from "../hooks/personalHooks";
 
 const Home = ({ imageUrl }) => {
   const { popular: popularMovies } = moviesApi;
   const { popular: popularSeries } = seriesApi;
+  const { popular: popularCelebrities } = celebritiesApi;
 
   const [popularMoviesData] = useMovies(1, popularMovies);
   const [popularSeriesData] = useMovies(1, popularSeries);
+  const [popularCelebritiesData] = useCelebrities(1, popularCelebrities);
 
   let popularMoviesResults = [],
-    popularSeriesResults = [];
-    
+    popularSeriesResults = [],
+    popularCelebritiesResults = [];
+
   if (popularMoviesData) {
     popularMoviesResults = popularMoviesData.results;
   }
@@ -22,10 +26,19 @@ const Home = ({ imageUrl }) => {
     popularSeriesResults = popularSeriesData.results;
   }
 
+  if (popularCelebritiesData) {
+    popularCelebritiesResults = popularCelebritiesData.results;
+  }
+
   const [popularMoviesViewLess, popularMoviesViewMore, popularMoviesLimit] =
     useView(5, popularMoviesResults);
   const [popularSeriesViewLess, popularSeriesViewMore, popularSeriesLimit] =
     useView(5, popularSeriesResults);
+  const [
+    popularCelebritiesViewLess,
+    popularCelebritiesViewMore,
+    popularCelebritiesLimit,
+  ] = useView(5, popularCelebritiesResults);
 
   return (
     <>
@@ -65,6 +78,24 @@ const Home = ({ imageUrl }) => {
                 poster_path={poster_path}
                 release_date={first_air_date}
                 key={index}
+                imageUrl={imageUrl}
+              />
+            );
+          })}
+      </SectionView>
+      <SectionView
+        title="Top 20 des personnes célèbres"
+        viewLess={popularCelebritiesViewLess}
+        viewMore={popularCelebritiesViewMore}
+      >
+        {popularCelebritiesResults
+          .slice(0, popularCelebritiesLimit)
+          .map(({ profile_path, name }, index) => {
+            return (
+              <CelebrityCard
+                key={index}
+                profile_path={profile_path}
+                name={name}
                 imageUrl={imageUrl}
               />
             );
