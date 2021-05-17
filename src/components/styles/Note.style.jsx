@@ -7,8 +7,8 @@ export const Box = styled.div`
   position: absolute;
   top: -200px;
   left: -35px;
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -39,6 +39,7 @@ export const Svg = styled.svg`
   position: relative;
   width: 50px;
   height: 50px;
+  transform: rotate(90deg);
   circle {
     width: 40px;
     height: 40px;
@@ -54,9 +55,9 @@ export const Svg = styled.svg`
     }
     &:nth-child(2) {
       stroke: ${({ percent }) =>
-        (percent < 50 && "red") ||
-        ((percent === 50 || percent < 70) && "yellow") ||
-        (percent >= 70 && "green")};
+        (percent < 50 && "#a93c28") ||
+        ((percent === 50 || percent < 70) && "#f5cc47") ||
+        (percent >= 70 && "#6fa550")};
       stroke-dashoffset: ${({ percent }) =>
         `calc(130 - (130 * ${percent}) / 100)`};
     }

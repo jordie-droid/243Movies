@@ -22,7 +22,7 @@ export const Logo = styled.div`
   flex-direction: column;
   margin: 20px;
   hr {
-    background-color: ${light};
+    background-color: ${basic};
   }
   img {
     width: 50px;
@@ -39,7 +39,7 @@ export const Social = styled.div`
     margin-left: 50px;
   }
   ~ hr {
-    background-color: ${light};
+    background-color: ${basic};
     margin-right: 20px;
   }
 `;
