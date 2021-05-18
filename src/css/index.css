@@ -151,8 +151,8 @@ input:focus {
   justify-content: center;
   align-items: center;
   top: 0;
-  left: 60%;
-  transform: translateX(-15%);
+  left: 50%;
+  transform: translateX(-50%);
   background-color: #a93b2883;
   font-size: 0.5rem;
   width: 100%;

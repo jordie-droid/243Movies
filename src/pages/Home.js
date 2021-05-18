@@ -3,6 +3,7 @@ import FadeCarousel from "../components/Carousel";
 import CelebrityCard from "../components/CelebrityCard";
 import MovieCard from "../components/MovieCard";
 import SectionView from "../components/SectionView";
+import SerieCard from "../components/SerieCard";
 import { useCelebrities, useMovies, useView } from "../hooks/personalHooks";
 
 const Home = ({ imageUrl }) => {
@@ -50,18 +51,21 @@ const Home = ({ imageUrl }) => {
       >
         {popularMoviesResults
           .slice(0, popularMoviesLimit)
-          .map(({ title, vote_average, poster_path, release_date }, index) => {
-            return (
-              <MovieCard
-                title={title}
-                vote_average={vote_average}
-                poster_path={poster_path}
-                release_date={release_date}
-                key={index}
-                imageUrl={imageUrl}
-              />
-            );
-          })}
+          .map(
+            ({ id, title, vote_average, poster_path, release_date }, index) => {
+              return (
+                <MovieCard
+                  id={id}
+                  title={title}
+                  vote_average={vote_average}
+                  poster_path={poster_path}
+                  release_date={release_date}
+                  key={index}
+                  imageUrl={imageUrl}
+                />
+              );
+            }
+          )}
       </SectionView>
       <SectionView
         title="Top 20 des séries les plus populaires"
@@ -70,18 +74,24 @@ const Home = ({ imageUrl }) => {
       >
         {popularSeriesResults
           .slice(0, popularSeriesLimit)
-          .map(({ name, vote_average, poster_path, first_air_date }, index) => {
-            return (
-              <MovieCard
-                title={name}
-                vote_average={vote_average}
-                poster_path={poster_path}
-                release_date={first_air_date}
-                key={index}
-                imageUrl={imageUrl}
-              />
-            );
-          })}
+          .map(
+            (
+              { id, name, vote_average, poster_path, first_air_date },
+              index
+            ) => {
+              return (
+                <SerieCard
+                  id={id}
+                  title={name}
+                  vote_average={vote_average}
+                  poster_path={poster_path}
+                  release_date={first_air_date}
+                  key={index}
+                  imageUrl={imageUrl}
+                />
+              );
+            }
+          )}
       </SectionView>
       <SectionView
         title="Top 20 des personnes célèbres"
@@ -90,9 +100,10 @@ const Home = ({ imageUrl }) => {
       >
         {popularCelebritiesResults
           .slice(0, popularCelebritiesLimit)
-          .map(({ profile_path, name }, index) => {
+          .map(({ id, profile_path, name }, index) => {
             return (
               <CelebrityCard
+                id={id}
                 key={index}
                 profile_path={profile_path}
                 name={name}

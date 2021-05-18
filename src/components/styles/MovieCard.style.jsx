@@ -31,6 +31,7 @@ export const Body = styled.div`
   width: 100%;
   padding: 10px;
   background-color: ${light};
+  border-top: solid 2px ${primary};
   h6 {
     font-weight: bold;
   }

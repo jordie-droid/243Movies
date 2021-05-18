@@ -39,4 +39,7 @@ export const ViewButton = styled.button`
   transition: 1s;
   margin: 20px 20px 0;
   border-radius: 5px;
+  &:focus {
+    outline: none;
+  }
 `;

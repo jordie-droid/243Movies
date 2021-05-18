@@ -16,31 +16,18 @@ export const Header = styled.div`
   justify-content: space-between;
 `;
 
-export const Logo = styled.div`
-  display: flex;
-  width: 40%;
-  flex-direction: column;
-  margin: 20px;
-  hr {
-    background-color: ${basic};
-  }
-  img {
-    width: 50px;
-    margin-bottom: 5px;
-  }
-`;
-
 export const Social = styled.div`
   display: flex;
-  justify-content: flex-end;
+  width: 100%;
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin: 20px;
   img {
-    width: 50px;
-    margin-left: 50px;
+    width: 30px;
   }
   ~ hr {
     background-color: ${basic};
-    margin-right: 20px;
+    margin-left: 20px;
   }
 `;
 

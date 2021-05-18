@@ -3,7 +3,7 @@ import { Body, CardContainer, Header } from "./styles/MovieCard.style";
 import NoImage from "../images/NoImage.png";
 import { Link } from "react-router-dom";
 
-const MovieCard = ({
+const SerieCard = ({
   id,
   title,
   vote_average,
@@ -23,10 +23,12 @@ const MovieCard = ({
         <h6>{title}</h6>
         <p>{release_date}</p>
         <Note percent={Math.round(vote_average * 10)} />
-        <Link to={`/movieViewMore/${id}`}>Plus d'info</Link>
+        <Link onClick={()=> alert("hello")} to={`/serieViewMore/${id}`}>
+          Plus d'info
+        </Link>
       </Body>
     </CardContainer>
   );
 };
 
-export default MovieCard;
+export default SerieCard;
