@@ -23,6 +23,7 @@ const MovieViewMore = ({ imageUrl }) => {
   const { id: movieID } = useParams();
   const [movieDetail, movieCredit, similarMovies, recommendation, trailerKey] =
     useMovieDetails(movieID);
+    
 
   let detailResults = [],
     creditResults = [],

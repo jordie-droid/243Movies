@@ -12,6 +12,7 @@
 
 body {
   background-color: #e4e6eb !important;
+  /* background: repeating-radial-gradient(#18191a, #18191a 10px, #28191a 5px, #18191a 15px); */
 }
 
 body::-webkit-scrollbar {

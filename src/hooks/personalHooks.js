@@ -57,31 +57,20 @@ export const useMovies = (currentPage, url) => {
 };
 
 export const useMovieDetails = (movieID) => {
-  const [detailMovieUrl] = useState(
-    `https://api.themoviedb.org/3/movie/${movieID}?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
-  );
-  const [creditMovieUrl] = useState(
-    `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
-  );
-  const [recommendationMovieUrl] = useState(
-    `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=d6ad6af3d05f971cd2712d949276910b&language=en-US&page=1`
-  );
-  const [similarMoviesUrl] = useState(
-    `https://api.themoviedb.org/3/movie/${movieID}/similar?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=1`
-  );
+  const movieDetailUrl = `https://api.themoviedb.org/3/movie/${movieID}?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
+  const creditMovieUrl = `https://api.themoviedb.org/3/movie/${movieID}/credits?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
+  const recommendationMovieUrl = `https://api.themoviedb.org/3/movie/${movieID}/recommendations?api_key=d6ad6af3d05f971cd2712d949276910b&language=en-US&page=1`;
+  const similarMoviesUrl = `https://api.themoviedb.org/3/movie/${movieID}/similar?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=1`;
+  const trailerUrl = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
 
-  const [trailerUrl] = useState(
-    `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
-  );
-
-  const [detailMovieData, setDetail] = useState();
-  const [creditMovieData, setCredit] = useState();
+  const [movieDetailData, setDetail] = useState();
+  const [movieCreditData, setCredit] = useState();
   const [recommendation, setRecommendation] = useState();
   const [similarMovies, setSimilarMovies] = useState();
   const [trailerKey, setTrailerKey] = useState();
 
   const fetchDetailMovie = async () => {
-    const response = await fetch(detailMovieUrl);
+    const response = await fetch(movieDetailUrl);
     const data = await response.json();
     await setDetail(data);
   };
@@ -112,27 +101,15 @@ export const useMovieDetails = (movieID) => {
 
   useEffect(() => {
     fetchDetailMovie();
-  }, [detailMovieUrl]);
-
-  useEffect(() => {
-    fetchCreditSerie();
-  }, [creditMovieUrl]);
-
-  useEffect(() => {
-    fetchRecommendationSerie();
-  }, [recommendationMovieUrl]);
-
-  useEffect(() => {
-    fetchSimilarSerie();
-  }, [similarMoviesUrl]);
-
-  useEffect(() => {
     fetchTrailerSerie();
-  }, [trailerUrl]);
+    fetchSimilarSerie();
+    fetchRecommendationSerie();
+    fetchCreditSerie();
+  }, [movieID]);
 
   return [
-    detailMovieData,
-    creditMovieData,
+    movieDetailData,
+    movieCreditData,
     similarMovies,
     recommendation,
     trailerKey,
@@ -140,21 +117,11 @@ export const useMovieDetails = (movieID) => {
 };
 
 export const useSerieDetails = (serieID) => {
-  const [detailSerieUrl, setDetailSerieUrl] = useState("");
-
-  const [creditSerieUrl] = useState(
-    `https://api.themoviedb.org/3/tv/${serieID}/credits?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
-  );
-  const [recommendationSerieUrl] = useState(
-    `https://api.themoviedb.org/3/tv/${serieID}/recommendations?api_key=d6ad6af3d05f971cd2712d949276910b&language=en-US&page=1`
-  );
-  const [similarSeriesUrl] = useState(
-    `https://api.themoviedb.org/3/tv/${serieID}/similar?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=1`
-  );
-
-  const [trailerUrl] = useState(
-    `https://api.themoviedb.org/3/tv/${serieID}/videos?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
-  );
+  const serieDetailUrl = `https://api.themoviedb.org/3/tv/${serieID}?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
+  const serieCreditUrl = `https://api.themoviedb.org/3/tv/${serieID}/credits?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
+  const SerieRecommendationUrl = `https://api.themoviedb.org/3/tv/${serieID}/recommendations?api_key=d6ad6af3d05f971cd2712d949276910b&language=en-US&page=1`
+  const similarSeriesUrl = `https://api.themoviedb.org/3/tv/${serieID}/similar?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=1`
+  const trailerUrl = `https://api.themoviedb.org/3/tv/${serieID}/videos?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
 
   const [detailSerieData, setDetail] = useState();
   const [creditSerieData, setCredit] = useState();
@@ -163,22 +130,19 @@ export const useSerieDetails = (serieID) => {
   const [trailerKey, setTrailerKey] = useState();
 
   const fetchDetailSerie = async () => {
-    setDetailSerieUrl(
-      `https://api.themoviedb.org/3/tv/${serieID}?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
-    );
-    const response = await fetch(detailSerieUrl);
+    const response = await fetch(serieDetailUrl);
     const data = await response.json();
     await setDetail(data);
   };
 
   const fetchCreditSerie = async () => {
-    const response = await fetch(creditSerieUrl);
+    const response = await fetch(serieCreditUrl);
     const data = await response.json();
     await setCredit(data);
   };
 
   const fetchRecommendationSerie = async () => {
-    const response = await fetch(recommendationSerieUrl);
+    const response = await fetch(SerieRecommendationUrl);
     const data = await response.json();
     await setRecommendation(data);
   };
@@ -196,27 +160,12 @@ export const useSerieDetails = (serieID) => {
   };
 
   useEffect(() => {
-    console.log("text :", detailSerieUrl);
-  }, []);
-  useEffect(() => {
     fetchDetailSerie();
-  }, [detailSerieUrl]);
-
-  useEffect(() => {
-    fetchCreditSerie();
-  }, [creditSerieUrl]);
-
-  useEffect(() => {
-    fetchRecommendationSerie();
-  }, [recommendationSerieUrl]);
-
-  useEffect(() => {
-    fetchSimilarSerie();
-  }, [similarSeriesUrl]);
-
-  useEffect(() => {
     fetchTrailerSerie();
-  }, [trailerUrl]);
+    fetchCreditSerie();
+    fetchSimilarSerie();
+    fetchRecommendationSerie();
+  }, [serieID]);
 
   return [
     detailSerieData,

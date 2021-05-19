@@ -23,7 +23,7 @@ const SerieCard = ({
         <h6>{title}</h6>
         <p>{release_date}</p>
         <Note percent={Math.round(vote_average * 10)} />
-        <Link onClick={()=> alert("hello")} to={`/serieViewMore/${id}`}>
+        <Link to={`/serieViewMore/${id}`}>
           Plus d'info
         </Link>
       </Body>

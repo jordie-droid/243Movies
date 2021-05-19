@@ -78,14 +78,14 @@ const SerieViewMore = ({ imageUrl }) => {
                   ? `${imageUrl}${detailResults.poster_path}`
                   : NoImage
               }
-              alt={detailResults.title}
+              alt={detailResults.name}
             />
             <PlayVideoContainer onClick={showModal}>
               <PlayVideo />
             </PlayVideoContainer>
           </MoviePoster>
           <Overview>
-            <h1>{detailResults.title}</h1>
+            <h1>{detailResults.name}</h1>
             <p>{detailResults.overview}</p>
             <MovieActors>
               {creditResults
