@@ -9,7 +9,7 @@ export const PaginationContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  margin: 20px;
+  margin: 40px 0;
   p {
     position: relative;
     margin: 0 10px;

@@ -44,7 +44,7 @@ const Series = ({ imageUrl }) => {
     <>
       <GenresContainer>
         {seriesGenres.map(({ id, name }) => (
-          <Link key={id} url={`/movie/${id}/${name}`}>
+          <Link key={id} url={`/serie/${id}/${name}`}>
             {name}
           </Link>
         ))}

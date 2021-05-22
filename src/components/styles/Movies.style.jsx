@@ -8,7 +8,7 @@ export const GenresContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 80px;
+  margin: 80px 0 30px;
   a {
     border: solid 1px ${primary};
     font-size: 1rem;

@@ -1,30 +1,30 @@
 import { useState } from "react";
 import { useParams } from "react-router";
-import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
+import SerieCard from "../components/SerieCard";
 import {
   MainContainer,
   MoviesContainer,
 } from "../components/styles/MoviesGenre.style";
 import { useMovies } from "../hooks/personalHooks";
 
-const MoviesGenre = ({ imageUrl }) => {
+const SeriesGenre = ({ imageUrl }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { id, name } = useParams();
 
-  const moviesGenreApi = `https://api.themoviedb.org/3/discover/movie?with_genres=${id}&api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=`;
+  const seriesGenreApi = `https://api.themoviedb.org/3/discover/tv?with_genres=${id}&api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=`;
 
-  const [moviesData] = useMovies(currentPage, moviesGenreApi);
-  let moviesResults = [],
+  const [seriesData] = useMovies(currentPage, seriesGenreApi);
+  let seriesResults = [],
     results = [];
 
-  if (moviesData) {
-    moviesResults = moviesData;
-    results = moviesResults.results;
+  if (seriesData) {
+    seriesResults = seriesData;
+    results = seriesResults.results;
   }
 
   const nextPage = () => {
-    if (currentPage < moviesResults.total_pages) {
+    if (currentPage < seriesResults.total_pages) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -37,17 +37,17 @@ const MoviesGenre = ({ imageUrl }) => {
 
   return (
     <MainContainer>
-      <h1>Voici les films du genre : {name}</h1>
+      <h1>Voici les séries du genre : {name}</h1>
       <Pagination
         prevPage={prevPage}
         nextPage={nextPage}
         currentPage={currentPage}
-        totalPages={moviesResults.total_pages}
+        totalPages={seriesResults.total_pages}
       />
       <MoviesContainer>
         {results.map(
           ({ id, title, vote_average, poster_path, release_date }, index) => (
-            <MovieCard
+            <SerieCard
               id={id}
               title={title}
               vote_average={vote_average}
@@ -63,10 +63,10 @@ const MoviesGenre = ({ imageUrl }) => {
         prevPage={prevPage}
         nextPage={nextPage}
         currentPage={currentPage}
-        totalPages={moviesResults.total_pages}
+        totalPages={seriesResults.total_pages}
       />
     </MainContainer>
   );
 };
 
-export default MoviesGenre;
+export default SeriesGenre;
