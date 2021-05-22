@@ -166,6 +166,10 @@ input:focus {
   align-items: center;
 }
 
+.h90 {
+  height: 70vh;
+}
+
 @media screen and (max-width: 900px) {
   .header__left-side .logo button {
     display: flex;

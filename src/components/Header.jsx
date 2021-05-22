@@ -1,12 +1,12 @@
 import Link from "./Link";
 import { useState } from "react";
 import logo from "../images/Logo.svg";
-import hamburger from "../images/icons/hamburger.svg";
-import closemenu from "../images/icons/chrome-close.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const Header = () => {
   const [hideMenu, setHideMenu] = useState(true);
-
   return (
     <div className="header">
       <div className="header__left-side">
@@ -16,9 +16,11 @@ const Header = () => {
               setHideMenu(!hideMenu);
             }}
           >
-            <img src={hideMenu ? hamburger : closemenu} alt=""></img>
+            {hideMenu ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faTimes} /> }
           </button>
-          <img src={logo} alt="logo du site" className="image" />
+          <Link url="/">
+            <img src={logo} alt="logo du site" className="image" />
+          </Link>
         </div>
         <ul className="menu" id={hideMenu ? "menu-hidden" : "menu-visible"}>
           <li>

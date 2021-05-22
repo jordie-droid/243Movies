@@ -63,11 +63,11 @@ export const useMovieDetails = (movieID) => {
   const similarMoviesUrl = `https://api.themoviedb.org/3/movie/${movieID}/similar?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=1`;
   const trailerUrl = `https://api.themoviedb.org/3/movie/${movieID}/videos?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
 
-  const [movieDetailData, setDetail] = useState();
-  const [movieCreditData, setCredit] = useState();
-  const [recommendation, setRecommendation] = useState();
-  const [similarMovies, setSimilarMovies] = useState();
-  const [trailerKey, setTrailerKey] = useState();
+  const [movieDetailData, setDetail] = useState(null);
+  const [movieCreditData, setCredit] = useState(null);
+  const [recommendation, setRecommendation] = useState(null);
+  const [similarMovies, setSimilarMovies] = useState(null);
+  const [trailerKey, setTrailerKey] = useState(null);
 
   const fetchDetailMovie = async () => {
     const response = await fetch(movieDetailUrl);
@@ -75,36 +75,40 @@ export const useMovieDetails = (movieID) => {
     await setDetail(data);
   };
 
-  const fetchCreditSerie = async () => {
+  const fetchCreditMovie = async () => {
     const response = await fetch(creditMovieUrl);
     const data = await response.json();
     await setCredit(data);
   };
 
-  const fetchRecommendationSerie = async () => {
+  const fetchRecommendationMovie = async () => {
     const response = await fetch(recommendationMovieUrl);
     const data = await response.json();
     await setRecommendation(data);
   };
 
-  const fetchSimilarSerie = async () => {
+  const fetchSimilarMovie = async () => {
     const response = await fetch(similarMoviesUrl);
     const data = await response.json();
     await setSimilarMovies(data);
   };
 
-  const fetchTrailerSerie = async () => {
+  const fetchTrailerMovie = async () => {
     const response = await fetch(trailerUrl);
     const data = await response.json();
-    await setTrailerKey(data.results);
+    await setTrailerKey(
+      data.results.length > 0
+        ? data.results[0].key
+        : "La vidéo d'annonce n'est pas encore disponible"
+    );
   };
 
   useEffect(() => {
     fetchDetailMovie();
-    fetchTrailerSerie();
-    fetchSimilarSerie();
-    fetchRecommendationSerie();
-    fetchCreditSerie();
+    fetchTrailerMovie();
+    fetchSimilarMovie();
+    fetchRecommendationMovie();
+    fetchCreditMovie();
   }, [movieID]);
 
   return [
@@ -117,17 +121,17 @@ export const useMovieDetails = (movieID) => {
 };
 
 export const useSerieDetails = (serieID) => {
-  const serieDetailUrl = `https://api.themoviedb.org/3/tv/${serieID}?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
-  const serieCreditUrl = `https://api.themoviedb.org/3/tv/${serieID}/credits?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
-  const SerieRecommendationUrl = `https://api.themoviedb.org/3/tv/${serieID}/recommendations?api_key=d6ad6af3d05f971cd2712d949276910b&language=en-US&page=1`
-  const similarSeriesUrl = `https://api.themoviedb.org/3/tv/${serieID}/similar?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=1`
-  const trailerUrl = `https://api.themoviedb.org/3/tv/${serieID}/videos?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`
+  const serieDetailUrl = `https://api.themoviedb.org/3/tv/${serieID}?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
+  const serieCreditUrl = `https://api.themoviedb.org/3/tv/${serieID}/credits?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
+  const SerieRecommendationUrl = `https://api.themoviedb.org/3/tv/${serieID}/recommendations?api_key=d6ad6af3d05f971cd2712d949276910b&language=en-US&page=1`;
+  const similarSeriesUrl = `https://api.themoviedb.org/3/tv/${serieID}/similar?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=1`;
+  const trailerUrl = `https://api.themoviedb.org/3/tv/${serieID}/videos?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
 
-  const [detailSerieData, setDetail] = useState();
-  const [creditSerieData, setCredit] = useState();
-  const [recommendation, setRecommendation] = useState();
-  const [similarSeries, setSimilarSeries] = useState();
-  const [trailerKey, setTrailerKey] = useState();
+  const [detailSerieData, setDetail] = useState(null);
+  const [creditSerieData, setCredit] = useState(null);
+  const [recommendation, setRecommendation] = useState(null);
+  const [similarSeries, setSimilarSeries] = useState(null);
+  const [trailerKey, setTrailerKey] = useState(null);
 
   const fetchDetailSerie = async () => {
     const response = await fetch(serieDetailUrl);
@@ -156,7 +160,11 @@ export const useSerieDetails = (serieID) => {
   const fetchTrailerSerie = async () => {
     const response = await fetch(trailerUrl);
     const data = await response.json();
-    await setTrailerKey(data.results);
+    await setTrailerKey(
+      data.results.length > 0
+        ? data.results[0].key
+        : "La vidéo d'annonce n'est pas encore disponible"
+    );
   };
 
   useEffect(() => {
@@ -192,3 +200,5 @@ export const useCelebrities = (currentPage, url) => {
 
   return [celebritiesData];
 };
+
+export const useCelebritieDetail = () => {};

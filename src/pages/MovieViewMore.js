@@ -23,13 +23,11 @@ const MovieViewMore = ({ imageUrl }) => {
   const { id: movieID } = useParams();
   const [movieDetail, movieCredit, similarMovies, recommendation, trailerKey] =
     useMovieDetails(movieID);
-    
 
   let detailResults = [],
     creditResults = [],
     similarMoviesResults = [],
-    recommendationResults = [],
-    trailer = "";
+    recommendationResults = [];
 
   if (movieDetail) {
     detailResults = movieDetail;
@@ -45,10 +43,6 @@ const MovieViewMore = ({ imageUrl }) => {
 
   if (recommendation) {
     recommendationResults = recommendation.results;
-  }
-
-  if (trailerKey) {
-    trailer = trailerKey[0].key;
   }
 
   const [similarMoviesViewLess, similarMoviesViewMore, similarMoviesLimit] =
@@ -159,24 +153,24 @@ const MovieViewMore = ({ imageUrl }) => {
         onHide={closeModal}
         backdrop="static"
         keyboard={false}
-        size="lg"
+        size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
         <Modal.Header closeButton>
           <Modal.Title>{detailResults.title}</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="h60">
-          {trailerKey ? (
+        <Modal.Body className="h90">
+          {trailerKey === "La vidéo d'annonce n'est pas encore disponible" ? (
+            "La vidéo d'annonce n'est pas encore disponible"
+          ) : (
             <iframe
               width="100%"
-              height="300"
-              src={`https://www.youtube.com/embed/${trailer}`}
+              height="100%"
+              src={`https://www.youtube.com/embed/${trailerKey}`}
               title="YouTube video player"
               frameBorder="0"
             ></iframe>
-          ) : (
-            <p>La vidéo d'annonce n'est pas encore disponible</p>
           )}
         </Modal.Body>
       </Modal>

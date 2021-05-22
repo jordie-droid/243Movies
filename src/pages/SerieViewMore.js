@@ -27,8 +27,7 @@ const SerieViewMore = ({ imageUrl }) => {
   let detailResults = [],
     creditResults = [],
     similarSeriesResults = [],
-    recommendationResults = [],
-    trailer = "";
+    recommendationResults = [];
 
   if (serieDetail) {
     detailResults = serieDetail;
@@ -44,12 +43,6 @@ const SerieViewMore = ({ imageUrl }) => {
 
   if (recommendation) {
     recommendationResults = recommendation.results;
-  }
-
-  if (trailerKey) {
-    if (trailerKey.length > 0) {
-      trailer = trailerKey[0].key;
-    }
   }
 
   const [similarSeriesViewLess, similarSeriesViewMore, similarSeriesLimit] =
@@ -117,14 +110,14 @@ const SerieViewMore = ({ imageUrl }) => {
         {similarSeriesResults
           .slice(0, similarSeriesLimit)
           .map(
-            ({ id, name, vote_average, poster_path, release_date }, index) => {
+            ({ id, name, vote_average, poster_path, first_air_date }, index) => {
               return (
                 <SerieCard
                   id={id}
                   title={name}
                   vote_average={vote_average}
                   poster_path={poster_path}
-                  release_date={release_date}
+                  release_date={first_air_date}
                   key={index}
                   imageUrl={imageUrl}
                 />
@@ -140,14 +133,14 @@ const SerieViewMore = ({ imageUrl }) => {
         {recommendationResults
           .slice(0, recommendationLimit)
           .map(
-            ({ id, name, vote_average, poster_path, release_date }, index) => {
+            ({ id, name, vote_average, poster_path, first_air_date }, index) => {
               return (
                 <SerieCard
                   id={id}
                   title={name}
                   vote_average={vote_average}
                   poster_path={poster_path}
-                  release_date={release_date}
+                  release_date={first_air_date}
                   key={index}
                   imageUrl={imageUrl}
                 />
@@ -160,19 +153,19 @@ const SerieViewMore = ({ imageUrl }) => {
         onHide={closeModal}
         backdrop="static"
         keyboard={false}
-        size="lg"
+        size="xl"
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
         <Modal.Header closeButton>
           <Modal.Title>{detailResults.name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="h60">
-          {trailerKey !== "" ? (
+        <Modal.Body className="h90">
+          {trailerKey !== "La vidéo d'annonce n'est pas encore disponible" ? (
             <iframe
               width="100%"
-              height="300"
-              src={`https://www.youtube.com/embed/${trailer}`}
+              height="100%"
+              src={`https://www.youtube.com/embed/${trailerKey}`}
               title="YouTube video player"
               frameBorder="0"
             ></iframe>

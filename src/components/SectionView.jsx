@@ -4,8 +4,8 @@ import {
   StyledSection,
   ButtonContainer,
 } from "./styles/SectionView.style";
-import plus from "../images/icons/plus.svg";
-import remove from "../images/icons/remove.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 
 const SectionView = ({ title, viewMore, viewLess, children }) => {
   return (
@@ -14,10 +14,10 @@ const SectionView = ({ title, viewMore, viewLess, children }) => {
       <StyledSection>{children}</StyledSection>
       <ButtonContainer>
         <ViewButton onClick={viewLess}>
-          <img src={remove} alt="remove" />
+          <FontAwesomeIcon icon={faMinus} />
         </ViewButton>
         <ViewButton onClick={viewMore}>
-          <img src={plus} alt="plus" />
+          <FontAwesomeIcon icon={faPlus} />
         </ViewButton>
       </ButtonContainer>
     </MainContainer>
