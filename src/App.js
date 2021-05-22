@@ -8,6 +8,8 @@ import MovieViewMore from "./pages/MovieViewMore";
 import SerieViewMore from "./pages/SerieViewMore";
 import CelebrityViewMore from "./pages/CelebrityViewMore";
 import Movies from "./pages/Movies";
+import Series from "./pages/Series";
+import MoviesGenre from "./pages/MoviesGenre";
 
 const App = () => {
   return (
@@ -49,7 +51,21 @@ const App = () => {
             <Movies imageUrl={"https://image.tmdb.org/t/p/w1280"} />
           )}
         />
-        <Route exact path="/movie/:id/:name"/>
+        <Route
+          exact
+          path="/movie/:id/:name"
+          component={() => (
+            <MoviesGenre imageUrl={"https://image.tmdb.org/t/p/w1280"} />
+          )}
+        />
+
+        <Route
+          exact
+          path="/Series"
+          component={() => (
+            <Series imageUrl={"https://image.tmdb.org/t/p/w1280"} />
+          )}
+        />
         <Footer />
       </BrowserRouter>
     </>

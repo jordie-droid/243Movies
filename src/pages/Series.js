@@ -1,33 +1,36 @@
 import { useState } from "react";
-import { moviesApi } from "../api/api";
+import { seriesApi } from "../api/api";
 import Link from "../components/Link";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
-import { GenresContainer, MoviesContainer } from "../components/styles/Movies.style";
+import {
+  GenresContainer,
+  MoviesContainer,
+} from "../components/styles/Movies.style";
 import { useGenres, useMovies } from "../hooks/personalHooks";
 
-const Movies = ({ imageUrl }) => {
-  const { genres: genresUrl, all: allMoviesUrl } = moviesApi;
+const Series = ({ imageUrl }) => {
+  const { genres: genresUrl, all: allSeriesUrl } = seriesApi;
   const [currentPage, setCurrentPage] = useState(1);
 
   const [genres] = useGenres(genresUrl);
-  const [moviesData] = useMovies(currentPage, allMoviesUrl);
+  const [seriesData] = useMovies(currentPage, allSeriesUrl);
 
-  let moviesGenres = [],
-    moviesResults = [],
+  let seriesGenres = [],
+    seriesResults = [],
     results = [];
 
   if (genres) {
-    moviesGenres = genres;
+    seriesGenres = genres;
   }
 
-  if (moviesData) {
-    moviesResults = moviesData;
-    results = moviesResults.results;
+  if (seriesData) {
+    seriesResults = seriesData;
+    results = seriesResults.results;
   }
 
   const nextPage = () => {
-    if (currentPage < moviesResults.total_pages) {
+    if (currentPage < seriesResults.total_pages) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -37,11 +40,10 @@ const Movies = ({ imageUrl }) => {
       setCurrentPage(currentPage - 1);
     }
   };
-
   return (
     <>
       <GenresContainer>
-        {moviesGenres.map(({ id, name }) => (
+        {seriesGenres.map(({ id, name }) => (
           <Link key={id} url={`/movie/${id}/${name}`}>
             {name}
           </Link>
@@ -52,16 +54,16 @@ const Movies = ({ imageUrl }) => {
           prevPage={prevPage}
           nextPage={nextPage}
           currentPage={currentPage}
-          totalPages={moviesResults.total_pages}
+          totalPages={seriesResults.total_pages}
         />
         {results.map(
-          ({ id, title, vote_average, poster_path, release_date }, index) => (
+          ({ id, name, vote_average, poster_path, first_air_date }, index) => (
             <MovieCard
               id={id}
-              title={title}
+              title={name}
               vote_average={vote_average}
               poster_path={poster_path}
-              release_date={release_date}
+              release_date={first_air_date}
               key={index}
               imageUrl={imageUrl}
             />
@@ -71,11 +73,11 @@ const Movies = ({ imageUrl }) => {
           prevPage={prevPage}
           nextPage={nextPage}
           currentPage={currentPage}
-          totalPages={moviesResults.total_pages}
+          totalPages={seriesResults.total_pages}
         />
       </MoviesContainer>
     </>
   );
 };
 
-export default Movies;
+export default Series;

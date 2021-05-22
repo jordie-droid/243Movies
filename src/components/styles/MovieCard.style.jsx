@@ -11,6 +11,11 @@ export const CardContainer = styled.div`
   border: solid 2px ${primary};
   border-radius: 20px 0 20px 0;
   margin: 0 5px 20px;
+  transition: 1s;
+  &:hover {
+    transform: scale(1.03);
+    z-index: 4;
+  }
 `;
 
 export const Header = styled.div`

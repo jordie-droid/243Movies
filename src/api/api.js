@@ -9,11 +9,12 @@ export const moviesApi = {
 };
 
 export const seriesApi = {
+  all: "https://api.themoviedb.org/3/tv/popular?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=",
   popular:
     "https://api.themoviedb.org/3/tv/popular?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=",
   featured: "",
   genres:
-    "https://api.themoviedb.org/3/genre/tv/list?api_key=d6ad6af3d05f971cd2712d949276910b&language=en-US",
+    "https://api.themoviedb.org/3/genre/tv/list?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR",
 };
 
 export const celebritiesApi = {
