@@ -2,7 +2,7 @@ import { Body, CardContainer, Header } from "./styles/CelebrityCard.style";
 import NoImage from "../images/NoImage.png";
 import { Link } from "react-router-dom";
 
-const CelebrityCard = ({ profile_path, name, imageUrl }) => {
+const CelebrityCard = ({ id, profile_path, name, imageUrl }) => {
   return (
     <CardContainer>
       <Header>
@@ -13,7 +13,7 @@ const CelebrityCard = ({ profile_path, name, imageUrl }) => {
       </Header>
       <Body>
         <h6>{name}</h6>
-        <Link to="/search">Plus d'info</Link>
+        <Link to={`/celebrityViewMore/${id}`}>Plus d'info</Link>
       </Body>
     </CardContainer>
   );

@@ -6,6 +6,7 @@ import Footer from "./components/Footer";
 import { BrowserRouter, Route } from "react-router-dom";
 import MovieViewMore from "./pages/MovieViewMore";
 import SerieViewMore from "./pages/SerieViewMore";
+import CelebrityViewMore from "./pages/CelebrityViewMore";
 
 const App = () => {
   // const [currentPage, prevPage, nextPage] = usePage(1, 10);
@@ -36,6 +37,13 @@ const App = () => {
           path="/serieViewMore/:id"
           component={() => (
             <SerieViewMore imageUrl={"https://image.tmdb.org/t/p/w1280"} />
+          )}
+        />
+        <Route
+          exact
+          path="/celebrityViewMore/:id"
+          component={() => (
+            <CelebrityViewMore imageUrl={"https://image.tmdb.org/t/p/w1280"} />
           )}
         />
         <Footer />

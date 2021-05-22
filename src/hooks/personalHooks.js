@@ -201,4 +201,20 @@ export const useCelebrities = (currentPage, url) => {
   return [celebritiesData];
 };
 
-export const useCelebritieDetail = () => {};
+export const useCelebrityInfo = (celebrityID) => {
+  const celebrityUrl = `https://api.themoviedb.org/3/person/${celebrityID}?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
+
+  const [celebrityInfo, setCelebrityInfo] = useState(null);
+
+  const fetchCelebrityInfo = async () => {
+    const response = await fetch(celebrityUrl);
+    const data = await response.json();
+    await setCelebrityInfo(data);
+  };
+
+  useEffect(() => {
+    fetchCelebrityInfo();
+  }, [celebrityID]);
+
+  return [celebrityInfo];
+};
