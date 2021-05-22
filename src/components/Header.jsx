@@ -16,7 +16,11 @@ const Header = () => {
               setHideMenu(!hideMenu);
             }}
           >
-            {hideMenu ? <FontAwesomeIcon icon={faBars} /> : <FontAwesomeIcon icon={faTimes} /> }
+            {hideMenu ? (
+              <FontAwesomeIcon icon={faBars} />
+            ) : (
+              <FontAwesomeIcon icon={faTimes} />
+            )}
           </button>
           <Link url="/">
             <img src={logo} alt="logo du site" className="image" />
@@ -29,17 +33,17 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link url="/films" activeClassName="active">
+            <Link url="/movies" activeClassName="active">
               Films
             </Link>
           </li>
           <li>
-            <Link url="/séries" activeClassName="active">
+            <Link url="/series" activeClassName="active">
               Séries
             </Link>
           </li>
           <li>
-            <Link url="/celebrités" activeClassName="active">
+            <Link url="/celebrities" activeClassName="active">
               Célébrités
             </Link>
           </li>

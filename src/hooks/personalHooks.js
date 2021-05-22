@@ -1,28 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
 
-export const usePage = (defaultValue, pagesNumber) => {
-  const [page, setPage] = useState(defaultValue);
-
-  const getPage = () => {
-    return page;
-  };
-
-  const nextPage = () => {
-    if (page < pagesNumber) {
-      setPage(page + 1);
-    }
-  };
-
-  const prevPage = () => {
-    if (page > 1) {
-      setPage(page - 1);
-    }
-  };
-
-  return [getPage, prevPage, nextPage];
-};
-
 export const useView = (defaultLimit, table) => {
   const [limit, setLimit] = useState(defaultLimit);
 
@@ -40,7 +18,7 @@ export const useView = (defaultLimit, table) => {
 };
 
 export const useMovies = (currentPage, url) => {
-  const [moviesUrl] = useState(`${url}${currentPage}`);
+  const moviesUrl = `${url}${currentPage}`;
   const [moviesData, setMoviesData] = useState();
 
   const fetchMovies = async () => {
@@ -51,7 +29,7 @@ export const useMovies = (currentPage, url) => {
 
   useEffect(() => {
     fetchMovies();
-  }, [moviesUrl]);
+  }, [currentPage]);
 
   return [moviesData];
 };
@@ -217,4 +195,20 @@ export const useCelebrityInfo = (celebrityID) => {
   }, [celebrityID]);
 
   return [celebrityInfo];
+};
+
+export const useGenres = (url) => {
+  const [genres, setGenres] = useState(null);
+
+  const fetchGenres = async () => {
+    const response = await fetch(url);
+    const data = await response.json();
+    await setGenres(data.genres);
+  };
+
+  useEffect(() => {
+    fetchGenres();
+  }, []);
+
+  return [genres];
 };

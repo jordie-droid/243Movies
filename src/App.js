@@ -7,13 +7,9 @@ import { BrowserRouter, Route } from "react-router-dom";
 import MovieViewMore from "./pages/MovieViewMore";
 import SerieViewMore from "./pages/SerieViewMore";
 import CelebrityViewMore from "./pages/CelebrityViewMore";
+import Movies from "./pages/Movies";
 
 const App = () => {
-  // const [currentPage, prevPage, nextPage] = usePage(1, 10);
-
-  //     <p>current page : {currentPage()} </p>
-  //     <button onClick={prevPage}>prev</button>
-  //     <button onClick={nextPage}>next</button>
   return (
     <>
       <BrowserRouter>
@@ -46,6 +42,14 @@ const App = () => {
             <CelebrityViewMore imageUrl={"https://image.tmdb.org/t/p/w1280"} />
           )}
         />
+        <Route
+          exact
+          path="/movies"
+          component={() => (
+            <Movies imageUrl={"https://image.tmdb.org/t/p/w1280"} />
+          )}
+        />
+        <Route exact path="/movie/:id/:name"/>
         <Footer />
       </BrowserRouter>
     </>
