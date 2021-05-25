@@ -7,8 +7,9 @@ export const CardContainer = styled.div`
   position: relative;
   width: 250px;
   height: 400px;
-  background-color: ${light};
-  border: solid 2px ${primary};
+  background-color: transparent;
+  border: solid 2px ${light};
+  color: ${light};
   border-radius: 20px 0 20px 0;
   margin: 0 5px 20px;
   transition: 1s;
@@ -35,8 +36,8 @@ export const Body = styled.div`
   bottom: 30px;
   width: 100%;
   padding: 10px;
-  background-color: ${light};
-  border-top: solid 2px ${primary};
+  background-color: #000;
+  border-top: solid 2px ${light};
   h6 {
     font-weight: bold;
     margin-bottom: 20px;
@@ -45,11 +46,13 @@ export const Body = styled.div`
     position: relative;
     left: -18px;
     padding: 10px;
-    border-radius: 5px;
-    background-color: ${primary};
+    border: solid 2px ${primary};
     text-decoration: none;
     transition: 1s;
     margin: 20px;
     color: ${light};
+    &:hover {
+      color: ${primary};
+    }
   }
 `;

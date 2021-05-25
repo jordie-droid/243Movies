@@ -163,7 +163,7 @@ export const useSerieDetails = (serieID) => {
 };
 
 export const useCelebrities = (currentPage, url) => {
-  const [celebritiesUrl] = useState(`${url}${currentPage}`);
+  const celebritiesUrl = `${url}${currentPage}`;
   const [celebritiesData, setCelebritiesData] = useState();
 
   const fetchMovies = async () => {
@@ -181,8 +181,10 @@ export const useCelebrities = (currentPage, url) => {
 
 export const useCelebrityInfo = (celebrityID) => {
   const celebrityUrl = `https://api.themoviedb.org/3/person/${celebrityID}?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
+  const celebrityMovieCreditUrl = `https://api.themoviedb.org/3/person/${celebrityID}/movie_credits?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR`;
 
   const [celebrityInfo, setCelebrityInfo] = useState(null);
+  const [movieCredit, setMovieCredit] = useState(null);
 
   const fetchCelebrityInfo = async () => {
     const response = await fetch(celebrityUrl);
@@ -190,11 +192,18 @@ export const useCelebrityInfo = (celebrityID) => {
     await setCelebrityInfo(data);
   };
 
+  const fetchcelebrityMovieCredit = async () => {
+    const response = await fetch(celebrityMovieCreditUrl);
+    const data = await response.json();
+    setMovieCredit(data);
+  };
+
   useEffect(() => {
     fetchCelebrityInfo();
+    fetchcelebrityMovieCredit();
   }, [celebrityID]);
 
-  return [celebrityInfo];
+  return [celebrityInfo, movieCredit];
 };
 
 export const useGenres = (url) => {

@@ -2,11 +2,11 @@ import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import theme from "../../theme";
 
-const { dark } = theme;
+const { light, dark } = theme;
 
 const StyledLink = styled(NavLink)`
-  font-size: 1.3rem;
-  color: ${dark};
+  font-size: 1rem;
+  color: ${light};
   text-decoration: none;
   transition: 1s;
   width: 100px;

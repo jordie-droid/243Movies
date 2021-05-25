@@ -17,6 +17,7 @@ export const GenresContainer = styled.div`
     width: 210px;
     text-decoration: none;
     &:hover {
+      color: ${primary};
     }
   }
 `;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "../../theme";
 
-const { primary, dark } = theme;
+const { primary, light } = theme;
 
 export const StyledSection = styled.section`
   display: flex;
@@ -15,13 +15,13 @@ export const MainContainer = styled.div`
   h4 {
     position: relative;
     width: 35%;
-    margin: 30px 10px 0;
+    margin: 30px 10px 20px;
     font-size: 1.3rem;
     font-weight: bold;
     border-radius: 50px;
     padding: 10px;
     text-align: center;
-    color: ${dark};
+    color: ${primary};
   }
 `;
 
@@ -32,14 +32,17 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ViewButton = styled.button`
-  border: none;
-  background-color: ${primary};
+  border: solid 2px ${primary};
+  background-color: transparent;
+  color: ${light};
   width: 50px;
   height: 50px;
   transition: 1s;
   margin: 20px 20px 0;
-  border-radius: 5px;
   &:focus {
     outline: none;
+  }
+  &:hover {
+    color: ${primary};
   }
 `;

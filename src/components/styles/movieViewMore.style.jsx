@@ -2,7 +2,7 @@ import styled from "styled-components";
 import theme from "../../theme";
 import NoImage from "../../images/NoImage.png";
 
-const { primary, secondary, light } = theme;
+const { primary, dark, light } = theme;
 
 export const MainContainer = styled.section`
   position: relative;
@@ -53,9 +53,11 @@ export const MoviePoster = styled.div`
 export const Overview = styled.div`
   width: 70%;
   margin-left: 20px;
+  color: ${light};
   h1 {
     font-weight: bold;
     margin-bottom: 10px;
+    color: ${primary};
   }
 `;
 
@@ -81,7 +83,7 @@ export const PlayVideoContainer = styled.div`
   cursor: pointer;
   transition: 1s;
   &:hover {
-    background-color: ${secondary};
+    background-color: ${dark};
   }
 `;
 
@@ -109,6 +111,7 @@ export const Card = styled.div`
 
 export const CardBody = styled.div`
   padding: 10px;
-  background-color: ${light};
+  background-color: #000;
+  color: ${light};
   height: 100%;
 `;

@@ -7,8 +7,8 @@ export const Footer = styled.footer`
   box-sizing: border-box;
   width: 100%;
   margin-top: 50px;
-  background-color: ${light};
-  color: ${dark};
+  background-color: ${dark};
+  color: ${light};
 `;
 
 export const Header = styled.div`
@@ -23,7 +23,7 @@ export const Social = styled.div`
   flex-wrap: wrap;
   margin: 20px;
   img {
-    width: 30px;
+    width: 35px;
   }
   ~ hr {
     background-color: ${basic};
@@ -41,7 +41,7 @@ export const Description = styled.div`
 
 export const CopyRight = styled.div`
   width: 100%;
-  background-color: ${primary};
+  background-color: #000;
   padding: 5px;
   color: ${light};
   display: flex;

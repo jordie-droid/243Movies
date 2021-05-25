@@ -36,36 +36,42 @@ const SeriesGenre = ({ imageUrl }) => {
   };
 
   return (
-    <MainContainer>
-      <h1>Voici les séries du genre : {name}</h1>
-      <Pagination
-        prevPage={prevPage}
-        nextPage={nextPage}
-        currentPage={currentPage}
-        totalPages={seriesResults.total_pages}
-      />
-      <MoviesContainer>
-        {results.map(
-          ({ id, title, vote_average, poster_path, release_date }, index) => (
-            <SerieCard
-              id={id}
-              title={title}
-              vote_average={vote_average}
-              poster_path={poster_path}
-              release_date={release_date}
-              key={index}
-              imageUrl={imageUrl}
-            />
-          )
-        )}
-      </MoviesContainer>
-      <Pagination
-        prevPage={prevPage}
-        nextPage={nextPage}
-        currentPage={currentPage}
-        totalPages={seriesResults.total_pages}
-      />
-    </MainContainer>
+    <>
+      {window.scrollTo(0, 0)}
+      <MainContainer>
+        <h1>Voici les séries du genre : {name}</h1>
+        <Pagination
+          prevPage={prevPage}
+          nextPage={nextPage}
+          currentPage={currentPage}
+          totalPages={seriesResults.total_pages}
+        />
+        <MoviesContainer>
+          {results.map(
+            (
+              { id, name, vote_average, poster_path, first_air_date },
+              index
+            ) => (
+              <SerieCard
+                id={id}
+                title={name}
+                vote_average={vote_average}
+                poster_path={poster_path}
+                release_date={first_air_date}
+                key={index}
+                imageUrl={imageUrl}
+              />
+            )
+          )}
+        </MoviesContainer>
+        <Pagination
+          prevPage={prevPage}
+          nextPage={nextPage}
+          currentPage={currentPage}
+          totalPages={seriesResults.total_pages}
+        />
+      </MainContainer>
+    </>
   );
 };
 

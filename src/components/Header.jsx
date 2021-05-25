@@ -1,6 +1,7 @@
 import Link from "./Link";
 import { useState } from "react";
-import logo from "../images/Logo.svg";
+// import logo from "../images/Logo.svg";
+import logo from "../images/Logo1.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";

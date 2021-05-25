@@ -59,6 +59,7 @@ const MovieViewMore = ({ imageUrl }) => {
 
   return (
     <>
+      {window.scrollTo(0, 0)}
       <MainContainer
         imageUrl={imageUrl}
         poster_path={detailResults.poster_path}

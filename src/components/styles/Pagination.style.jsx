@@ -13,17 +13,21 @@ export const PaginationContainer = styled.div`
   p {
     position: relative;
     margin: 0 10px;
+    color: ${light};
   }
 `;
 
 export const ButtonPagination = styled.button`
   width: 90px;
-  background-color: ${primary};
-  border-radius: 8px;
+  border: solid 2px ${primary};
+  background-color: transparent;
   color: ${light};
-  border: none;
   cursor: pointer;
+  transition: 1s;
   &:focus {
     outline: none;
+  }
+  &:hover {
+    color: ${primary};
   }
 `;

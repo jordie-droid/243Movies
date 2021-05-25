@@ -42,6 +42,7 @@ const Series = ({ imageUrl }) => {
   };
   return (
     <>
+      {window.scrollTo(0, 0)}
       <GenresContainer>
         {seriesGenres.map(({ id, name }) => (
           <Link key={id} url={`/serie/${id}/${name}`}>

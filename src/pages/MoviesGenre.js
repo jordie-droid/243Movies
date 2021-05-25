@@ -36,36 +36,39 @@ const MoviesGenre = ({ imageUrl }) => {
   };
 
   return (
-    <MainContainer>
-      <h1>Voici les films du genre : {name}</h1>
-      <Pagination
-        prevPage={prevPage}
-        nextPage={nextPage}
-        currentPage={currentPage}
-        totalPages={moviesResults.total_pages}
-      />
-      <MoviesContainer>
-        {results.map(
-          ({ id, title, vote_average, poster_path, release_date }, index) => (
-            <MovieCard
-              id={id}
-              title={title}
-              vote_average={vote_average}
-              poster_path={poster_path}
-              release_date={release_date}
-              key={index}
-              imageUrl={imageUrl}
-            />
-          )
-        )}
-      </MoviesContainer>
-      <Pagination
-        prevPage={prevPage}
-        nextPage={nextPage}
-        currentPage={currentPage}
-        totalPages={moviesResults.total_pages}
-      />
-    </MainContainer>
+    <>
+      {window.scrollTo(0, 0)}
+      <MainContainer>
+        <h1>Voici les films du genre : {name}</h1>
+        <Pagination
+          prevPage={prevPage}
+          nextPage={nextPage}
+          currentPage={currentPage}
+          totalPages={moviesResults.total_pages}
+        />
+        <MoviesContainer>
+          {results.map(
+            ({ id, title, vote_average, poster_path, release_date }, index) => (
+              <MovieCard
+                id={id}
+                title={title}
+                vote_average={vote_average}
+                poster_path={poster_path}
+                release_date={release_date}
+                key={index}
+                imageUrl={imageUrl}
+              />
+            )
+          )}
+        </MoviesContainer>
+        <Pagination
+          prevPage={prevPage}
+          nextPage={nextPage}
+          currentPage={currentPage}
+          totalPages={moviesResults.total_pages}
+        />
+      </MainContainer>
+    </>
   );
 };
 

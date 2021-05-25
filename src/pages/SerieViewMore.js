@@ -59,6 +59,7 @@ const SerieViewMore = ({ imageUrl }) => {
 
   return (
     <>
+      {window.scrollTo(0, 0)}
       <MainContainer
         imageUrl={imageUrl}
         poster_path={detailResults.poster_path}
@@ -110,7 +111,10 @@ const SerieViewMore = ({ imageUrl }) => {
         {similarSeriesResults
           .slice(0, similarSeriesLimit)
           .map(
-            ({ id, name, vote_average, poster_path, first_air_date }, index) => {
+            (
+              { id, name, vote_average, poster_path, first_air_date },
+              index
+            ) => {
               return (
                 <SerieCard
                   id={id}
@@ -133,7 +137,10 @@ const SerieViewMore = ({ imageUrl }) => {
         {recommendationResults
           .slice(0, recommendationLimit)
           .map(
-            ({ id, name, vote_average, poster_path, first_air_date }, index) => {
+            (
+              { id, name, vote_average, poster_path, first_air_date },
+              index
+            ) => {
               return (
                 <SerieCard
                   id={id}

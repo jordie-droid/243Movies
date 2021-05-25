@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import NoImage from "../../images/NoImage.png";
+import theme from "../../theme";
+
+const { primary, light } = theme;
 
 export const MainContainer = styled.section`
   position: relative;
@@ -27,6 +30,14 @@ export const MainContainer = styled.section`
     z-index: -1;
     border-radius: 10px;
   }
+  h3 {
+    margin: 30px 40px 0;
+    color: ${primary};
+  }
+  p {
+    margin: 20px 40px;
+    color: ${light};
+  }
 `;
 
 export const AboutCelebrity = styled.div`
@@ -53,5 +64,6 @@ export const Biography = styled.div`
   h1 {
     font-weight: bold;
     margin-bottom: 10px;
+    color: ${primary};
   }
 `;

@@ -3,7 +3,10 @@ import { moviesApi } from "../api/api";
 import Link from "../components/Link";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
-import { GenresContainer, MoviesContainer } from "../components/styles/Movies.style";
+import {
+  GenresContainer,
+  MoviesContainer,
+} from "../components/styles/Movies.style";
 import { useGenres, useMovies } from "../hooks/personalHooks";
 
 const Movies = ({ imageUrl }) => {
@@ -40,6 +43,7 @@ const Movies = ({ imageUrl }) => {
 
   return (
     <>
+      {window.scrollTo(0, 0)}
       <GenresContainer>
         {moviesGenres.map(({ id, name }) => (
           <Link key={id} url={`/movie/${id}/${name}`}>

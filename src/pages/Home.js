@@ -43,6 +43,7 @@ const Home = ({ imageUrl }) => {
 
   return (
     <>
+      {window.scrollTo(0, 0)}
       <FadeCarousel imageUrl={imageUrl} />
       <SectionView
         title="Top 20 des films les plus populaires"
