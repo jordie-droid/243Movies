@@ -20,14 +20,11 @@ export const useView = (defaultLimit, table) => {
 export const useMovies = (currentPage, url) => {
   const moviesUrl = `${url}${currentPage}`;
   const [moviesData, setMoviesData] = useState();
-  const [isLoading, setIsLoading] = useState(false);
 
   const fetchMovies = async () => {
-    setIsLoading(true);
     const response = await fetch(moviesUrl);
     const data = await response.json();
     await setMoviesData(data);
-    setIsLoading(false);
   };
 
   useEffect(() => {

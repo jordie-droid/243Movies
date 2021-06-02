@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { seriesApi } from "../api/api";
+import GenreSkeleton from "../components/GenreSkeleton";
 import Link from "../components/Link";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
@@ -8,6 +9,7 @@ import {
   MoviesContainer,
 } from "../components/styles/Movies.style";
 import { useGenres, useMovies } from "../hooks/personalHooks";
+import PageSkeleton from "../components/PageSkeleton"
 
 const Series = ({ imageUrl }) => {
   const { genres: genresUrl, all: allSeriesUrl } = seriesApi;
@@ -43,14 +45,18 @@ const Series = ({ imageUrl }) => {
   return (
     <>
       {window.scrollTo(0, 0)}
-      <GenresContainer>
-        {seriesGenres.map(({ id, name }) => (
-          <Link key={id} url={`/serie/${id}/${name}`}>
-            {name}
-          </Link>
-        ))}
-      </GenresContainer>
-      <MoviesContainer>
+      {genres ? (
+        <GenresContainer>
+          {seriesGenres.map(({ id, name }) => (
+            <Link key={id} url={`/serie/${id}/${name}`}>
+              {name}
+            </Link>
+          ))}
+        </GenresContainer>
+      ) : (
+        <GenreSkeleton />
+      )}
+      {seriesData ? <MoviesContainer>
         <Pagination
           prevPage={prevPage}
           nextPage={nextPage}
@@ -76,7 +82,7 @@ const Series = ({ imageUrl }) => {
           currentPage={currentPage}
           totalPages={seriesResults.total_pages}
         />
-      </MoviesContainer>
+      </MoviesContainer> : <PageSkeleton/>}
     </>
   );
 };

@@ -6,7 +6,7 @@ const { light, primary } = theme;
 export const CardContainer = styled.div`
   position: relative;
   width: 250px;
-  height: 400px;
+  height: 450px;
   background-color: transparent;
   border: solid 2px ${light};
   color: ${light};
@@ -38,15 +38,19 @@ export const Body = styled.div`
   padding: 10px;
   background-color: #000;
   border-top: solid 2px ${light};
+  bottom: 20px;
   h6 {
     font-weight: bold;
     margin-bottom: 20px;
   }
   a {
+    display: block;
     position: relative;
+    width: 100%;
     left: -18px;
     padding: 10px;
-    border: solid 2px ${primary};
+    border: solid 1px ${primary};
+    text-align: center;
     text-decoration: none;
     transition: 1s;
     margin: 20px;

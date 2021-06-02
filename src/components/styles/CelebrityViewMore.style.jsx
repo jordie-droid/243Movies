@@ -67,3 +67,11 @@ export const Biography = styled.div`
     color: ${primary};
   }
 `;
+
+export const Movies = styled.div`
+  padding: 20px;
+  color: ${light};
+  h3 {
+    color: ${primary};
+  }
+`;

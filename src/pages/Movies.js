@@ -8,6 +8,8 @@ import {
   MoviesContainer,
 } from "../components/styles/Movies.style";
 import { useGenres, useMovies } from "../hooks/personalHooks";
+import GenreSkeleton from "../components/GenreSkeleton";
+import PageSkeleton from "../components/PageSkeleton";
 
 const Movies = ({ imageUrl }) => {
   const { genres: genresUrl, all: allMoviesUrl } = moviesApi;
@@ -44,40 +46,48 @@ const Movies = ({ imageUrl }) => {
   return (
     <>
       {window.scrollTo(0, 0)}
-      <GenresContainer>
-        {moviesGenres.map(({ id, name }) => (
-          <Link key={id} url={`/movie/${id}/${name}`}>
-            {name}
-          </Link>
-        ))}
-      </GenresContainer>
-      <MoviesContainer>
-        <Pagination
-          prevPage={prevPage}
-          nextPage={nextPage}
-          currentPage={currentPage}
-          totalPages={moviesResults.total_pages}
-        />
-        {results.map(
-          ({ id, title, vote_average, poster_path, release_date }, index) => (
-            <MovieCard
-              id={id}
-              title={title}
-              vote_average={vote_average}
-              poster_path={poster_path}
-              release_date={release_date}
-              key={index}
-              imageUrl={imageUrl}
-            />
-          )
-        )}
-        <Pagination
-          prevPage={prevPage}
-          nextPage={nextPage}
-          currentPage={currentPage}
-          totalPages={moviesResults.total_pages}
-        />
-      </MoviesContainer>
+      {genres ? (
+        <GenresContainer>
+          {moviesGenres.map(({ id, name }) => (
+            <Link key={id} url={`/movie/${id}/${name}`}>
+              {name}
+            </Link>
+          ))}
+        </GenresContainer>
+      ) : (
+        <GenreSkeleton />
+      )}
+      {moviesData ? (
+        <MoviesContainer>
+          <Pagination
+            prevPage={prevPage}
+            nextPage={nextPage}
+            currentPage={currentPage}
+            totalPages={moviesResults.total_pages}
+          />
+          {results.map(
+            ({ id, title, vote_average, poster_path, release_date }, index) => (
+              <MovieCard
+                id={id}
+                title={title}
+                vote_average={vote_average}
+                poster_path={poster_path}
+                release_date={release_date}
+                key={index}
+                imageUrl={imageUrl}
+              />
+            )
+          )}
+          <Pagination
+            prevPage={prevPage}
+            nextPage={nextPage}
+            currentPage={currentPage}
+            totalPages={moviesResults.total_pages}
+          />
+        </MoviesContainer>
+      ) : (
+        <PageSkeleton />
+      )}
     </>
   );
 };

@@ -1,6 +1,7 @@
 import { Carousel } from "react-bootstrap";
 import { moviesApi } from "../api/api";
 import { useMovies } from "../hooks/personalHooks";
+import CarouselSkeleton from "./CarouselSkeleton";
 
 const FadeCarousel = ({ imageUrl }) => {
   const { all } = moviesApi;
@@ -8,13 +9,15 @@ const FadeCarousel = ({ imageUrl }) => {
   const [data] = useMovies(1, all);
 
   const showCarousel = () => {
-    let movies = null;
-    if (data) {
-      movies = data.results.slice(0, 4);
-      return movies.map(({ id, backdrop_path, title }) => {
+    return data ? (
+      data.results.slice(0, 4).map(({ id, backdrop_path, title }) => {
         return showImages(id, backdrop_path, title);
-      });
-    }
+      })
+    ) : (
+      <>
+        <CarouselSkeleton />
+      </>
+    );
   };
 
   const showImages = (id, backdrop_path, title) => {

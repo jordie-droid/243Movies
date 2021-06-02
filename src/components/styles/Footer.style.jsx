@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import theme from "../../theme";
 
-const { dark, light, primary, basic } = theme;
+const { dark, light, basic } = theme;
 
 export const Footer = styled.footer`
   box-sizing: border-box;

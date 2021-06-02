@@ -19,7 +19,7 @@ export const PaginationContainer = styled.div`
 
 export const ButtonPagination = styled.button`
   width: 90px;
-  border: solid 2px ${primary};
+  border: solid 1px ${primary};
   background-color: transparent;
   color: ${light};
   cursor: pointer;

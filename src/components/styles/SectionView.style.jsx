@@ -32,10 +32,10 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ViewButton = styled.button`
-  border: solid 2px ${primary};
+  border: solid 1px ${primary};
   background-color: transparent;
   color: ${light};
-  width: 50px;
+  width: 90px;
   height: 50px;
   transition: 1s;
   margin: 20px 20px 0;
@@ -44,5 +44,11 @@ export const ViewButton = styled.button`
   }
   &:hover {
     color: ${primary};
+  }
+  :disabled,
+  [disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
   }
 `;

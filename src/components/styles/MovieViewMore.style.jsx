@@ -73,7 +73,7 @@ export const PlayVideoContainer = styled.div`
   align-items: center;
   width: 150px;
   height: 150px;
-  background-color: ${primary};
+  background-color: ${dark};
   border-radius: 50%;
   position: absolute;
   top: 50%;
@@ -83,7 +83,7 @@ export const PlayVideoContainer = styled.div`
   cursor: pointer;
   transition: 1s;
   &:hover {
-    background-color: ${dark};
+    background-color: ${primary};
   }
 `;
 
@@ -95,7 +95,7 @@ export const PlayVideo = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 170px;
+  width: 200px;
   display: flex;
   flex-direction: column;
   margin-left: 10px;
@@ -105,7 +105,7 @@ export const Card = styled.div`
   overflow: hidden;
   img {
     width: 100%;
-    height: 150px;
+    height: 250px;
   }
 `;
 

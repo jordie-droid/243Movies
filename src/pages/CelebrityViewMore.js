@@ -4,6 +4,7 @@ import {
   Biography,
   MainContainer,
   Profile,
+  Movies,
 } from "../components/styles/CelebrityViewMore.style";
 import { useCelebrityInfo } from "../hooks/personalHooks";
 import NoImage from "../images/NoImage.png";
@@ -48,6 +49,8 @@ const CelebrityViewMore = ({ imageUrl }) => {
             </p>
           </Biography>
         </AboutCelebrity>
+      </MainContainer>
+      <Movies>
         <h3>
           {infoData.gender === 2
             ? "Comme acteur dans les films :"
@@ -60,7 +63,7 @@ const CelebrityViewMore = ({ imageUrl }) => {
             </strong>
           ))}{" "}
         </p>
-      </MainContainer>
+      </Movies>
     </>
   );
 };

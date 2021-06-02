@@ -13,7 +13,8 @@ import {
   Overview,
   PlayVideo,
   PlayVideoContainer,
-} from "../components/styles/movieViewMore.style";
+} from "../components/styles/MovieViewMore.style";
+import SectionViewSkeleton from "../components/SectionViewSkeleton";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 
@@ -103,52 +104,66 @@ const MovieViewMore = ({ imageUrl }) => {
           </Overview>
         </AboutMovie>
       </MainContainer>
-      <SectionView
-        title="Films similaires"
-        viewMore={similarMoviesViewMore}
-        viewLess={similarMoviesViewLess}
-      >
-        {similarMoviesResults
-          .slice(0, similarMoviesLimit)
-          .map(
-            ({ id, title, vote_average, poster_path, release_date }, index) => {
-              return (
-                <MovieCard
-                  id={id}
-                  title={title}
-                  vote_average={vote_average}
-                  poster_path={poster_path}
-                  release_date={release_date}
-                  key={index}
-                  imageUrl={imageUrl}
-                />
-              );
-            }
-          )}
-      </SectionView>
-      <SectionView
-        title="Recommandation"
-        viewMore={recommendationViewMore}
-        viewLess={recommendationViewLess}
-      >
-        {recommendationResults
-          .slice(0, recommendationLimit)
-          .map(
-            ({ id, title, vote_average, poster_path, release_date }, index) => {
-              return (
-                <MovieCard
-                  id={id}
-                  title={title}
-                  vote_average={vote_average}
-                  poster_path={poster_path}
-                  release_date={release_date}
-                  key={index}
-                  imageUrl={imageUrl}
-                />
-              );
-            }
-          )}
-      </SectionView>
+      {similarMovies ? (
+        <SectionView
+          title="Films similaires"
+          viewMore={similarMoviesViewMore}
+          viewLess={similarMoviesViewLess}
+        >
+          {similarMoviesResults
+            .slice(0, similarMoviesLimit)
+            .map(
+              (
+                { id, title, vote_average, poster_path, release_date },
+                index
+              ) => {
+                return (
+                  <MovieCard
+                    id={id}
+                    title={title}
+                    vote_average={vote_average}
+                    poster_path={poster_path}
+                    release_date={release_date}
+                    key={index}
+                    imageUrl={imageUrl}
+                  />
+                );
+              }
+            )}
+        </SectionView>
+      ) : (
+        <SectionViewSkeleton title="Films similaires" />
+      )}
+      {recommendation ? (
+        <SectionView
+          title="Recommandation"
+          viewMore={recommendationViewMore}
+          viewLess={recommendationViewLess}
+        >
+          {recommendationResults
+            .slice(0, recommendationLimit)
+            .map(
+              (
+                { id, title, vote_average, poster_path, release_date },
+                index
+              ) => {
+                return (
+                  <MovieCard
+                    id={id}
+                    title={title}
+                    vote_average={vote_average}
+                    poster_path={poster_path}
+                    release_date={release_date}
+                    key={index}
+                    imageUrl={imageUrl}
+                  />
+                );
+              }
+            )}
+        </SectionView>
+      ) : (
+        <SectionViewSkeleton title="Recommandation" />
+      )}
       <Modal
         show={show}
         onHide={closeModal}

@@ -13,7 +13,7 @@ import {
   Overview,
   PlayVideo,
   PlayVideoContainer,
-} from "../components/styles/movieViewMore.style";
+} from "../components/styles/MovieViewMore.style";
 import { useState } from "react";
 import { Modal } from "react-bootstrap";
 
@@ -83,7 +83,7 @@ const SerieViewMore = ({ imageUrl }) => {
             <p>{detailResults.overview}</p>
             <MovieActors>
               {creditResults
-                .slice(0, 5)
+                .slice(0, 8)
                 .map(({ profile_path, name }, index) => {
                   return (
                     <Card key={index}>
