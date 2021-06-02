@@ -3,6 +3,7 @@ import FadeCarousel from "../components/Carousel";
 import CelebrityCard from "../components/CelebrityCard";
 import MovieCard from "../components/MovieCard";
 import SectionView from "../components/SectionView";
+import SectionViewSkeleton from "../components/SectionViewSkeleton";
 import SerieCard from "../components/SerieCard";
 import { useCelebrities, useMovies, useView } from "../hooks/personalHooks";
 
@@ -113,6 +114,7 @@ const Home = ({ imageUrl }) => {
             );
           })}
       </SectionView>
+      <SectionViewSkeleton title="test" />
     </>
   );
 };

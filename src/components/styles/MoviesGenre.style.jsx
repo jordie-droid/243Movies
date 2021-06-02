@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import theme from "../../theme";
 
+const { primary } = theme;
 
 export const MainContainer = styled.section`
   margin-top: 80px;
@@ -8,6 +10,7 @@ export const MainContainer = styled.section`
     font-size: 2rem;
     text-align: center;
     margin-bottom: 20px;
+    color: ${primary};
   }
 `;
 
