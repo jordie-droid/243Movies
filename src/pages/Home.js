@@ -53,6 +53,8 @@ const Home = ({ imageUrl }) => {
               title="Top 20 des films les plus populaires"
               viewMore={popularMoviesViewMore}
               viewLess={popularMoviesViewLess}
+              limit={popularMoviesLimit}
+              length={popularMoviesResults.length}
             >
               {popularMoviesResults
                 .slice(0, popularMoviesLimit)
@@ -87,6 +89,8 @@ const Home = ({ imageUrl }) => {
               title="Top 20 des séries les plus populaires"
               viewMore={popularSeriesViewMore}
               viewLess={popularSeriesViewLess}
+              limit={popularSeriesLimit}
+              length={popularSeriesResults.length}
             >
               {popularSeriesResults
                 .slice(0, popularSeriesLimit)
@@ -121,6 +125,8 @@ const Home = ({ imageUrl }) => {
               title="Top 20 des personnes célèbres"
               viewLess={popularCelebritiesViewLess}
               viewMore={popularCelebritiesViewMore}
+              limit={popularCelebritiesLimit}
+              length={popularCelebritiesResults.length}
             >
               {popularCelebritiesResults
                 .slice(0, popularCelebritiesLimit)
