@@ -40,6 +40,11 @@ body::-webkit-scrollbar-thumb {
   object-fit: cover;
 }
 
+.active-tab {
+  background-color: #f1a111;
+  color: #ffffff;
+}
+
 .header {
   display: flex;
   justify-content: space-between;

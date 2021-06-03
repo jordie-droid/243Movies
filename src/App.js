@@ -12,6 +12,7 @@ import Series from "./pages/Series";
 import MoviesGenre from "./pages/MoviesGenre";
 import SeriesGenre from "./pages/SeriesGenre";
 import Celebrites from "./pages/Celebrites";
+import SearchPage from "./pages/SearchPage";
 
 const App = () => {
   return (
@@ -82,6 +83,14 @@ const App = () => {
           path="/celebrities"
           component={() => (
             <Celebrites imageUrl={"https://image.tmdb.org/t/p/w1280"} />
+          )}
+        />
+
+        <Route
+          exact
+          path="/search/:keyword"
+          component={() => (
+            <SearchPage imageUrl={"https://image.tmdb.org/t/p/w1280"} />
           )}
         />
 

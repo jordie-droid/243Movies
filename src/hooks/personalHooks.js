@@ -221,3 +221,21 @@ export const useGenres = (url) => {
 
   return [genres];
 };
+
+export const useSearch = (page, keyWord) => {
+  const searchUrl = `https://api.themoviedb.org/3/search/multi?api_key=d6ad6af3d05f971cd2712d949276910b&language=fr-FR&page=${page}&include_adult=false&query=${keyWord}`;
+
+  const [searchResults, setSearchResults] = useState(null);
+
+  const fetchKeyWord = async () => {
+    const response = await fetch(searchUrl);
+    const data = await response.json();
+    await setSearchResults(data);
+  };
+
+  useEffect(() => {
+    fetchKeyWord();
+  }, [searchUrl]);
+
+  return searchResults;
+};

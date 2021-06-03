@@ -20,16 +20,12 @@ const SectionView = ({
       <h4>{title}</h4>
       <StyledSection>{children}</StyledSection>
       <ButtonContainer>
-        {length > limit && (
-          <>
-            <ViewButton onClick={viewLess}>
-              <FontAwesomeIcon icon={faMinus} />
-            </ViewButton>
-            <ViewButton onClick={viewMore}>
-              <FontAwesomeIcon icon={faPlus} />
-            </ViewButton>
-          </>
-        )}
+        <ViewButton onClick={viewLess}>
+          <FontAwesomeIcon icon={faMinus} />
+        </ViewButton>
+        <ViewButton onClick={viewMore}>
+          <FontAwesomeIcon icon={faPlus} />
+        </ViewButton>
       </ButtonContainer>
     </MainContainer>
   );
