@@ -31,7 +31,7 @@ const FadeCarousel = ({ imageUrl }) => {
         <Carousel.Caption className="slider-caption">
           <h5>
             Bienvenue. Trouvez rapidement les informations sur les films que
-            vous cherchez. N'hesitez pas, explore maintenant !
+            vous cherchez. N'hesitez pas, explorez maintenant !
           </h5>
         </Carousel.Caption>
       </Carousel.Item>

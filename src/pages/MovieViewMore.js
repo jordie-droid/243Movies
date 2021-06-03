@@ -105,62 +105,74 @@ const MovieViewMore = ({ imageUrl }) => {
         </AboutMovie>
       </MainContainer>
       {similarMovies ? (
-        <SectionView
-          title="Films similaires"
-          viewMore={similarMoviesViewMore}
-          viewLess={similarMoviesViewLess}
-        >
-          {similarMoviesResults
-            .slice(0, similarMoviesLimit)
-            .map(
-              (
-                { id, title, vote_average, poster_path, release_date },
-                index
-              ) => {
-                return (
-                  <MovieCard
-                    id={id}
-                    title={title}
-                    vote_average={vote_average}
-                    poster_path={poster_path}
-                    release_date={release_date}
-                    key={index}
-                    imageUrl={imageUrl}
-                  />
-                );
-              }
-            )}
-        </SectionView>
+        <>
+          {similarMoviesResults.length > 0 && (
+            <SectionView
+              title="Films similaires"
+              viewMore={similarMoviesViewMore}
+              viewLess={similarMoviesViewLess}
+              limit={similarMoviesLimit}
+              length={similarMoviesResults.length}
+            >
+              {similarMoviesResults
+                .slice(0, similarMoviesLimit)
+                .map(
+                  (
+                    { id, title, vote_average, poster_path, release_date },
+                    index
+                  ) => {
+                    return (
+                      <MovieCard
+                        id={id}
+                        title={title}
+                        vote_average={vote_average}
+                        poster_path={poster_path}
+                        release_date={release_date}
+                        key={index}
+                        imageUrl={imageUrl}
+                      />
+                    );
+                  }
+                )}
+            </SectionView>
+          )}
+        </>
       ) : (
         <SectionViewSkeleton title="Films similaires" />
       )}
       {recommendation ? (
-        <SectionView
-          title="Recommandation"
-          viewMore={recommendationViewMore}
-          viewLess={recommendationViewLess}
-        >
-          {recommendationResults
-            .slice(0, recommendationLimit)
-            .map(
-              (
-                { id, title, vote_average, poster_path, release_date },
-                index
-              ) => {
-                return (
-                  <MovieCard
-                    id={id}
-                    title={title}
-                    vote_average={vote_average}
-                    poster_path={poster_path}
-                    release_date={release_date}
-                    key={index}
-                    imageUrl={imageUrl}
-                  />
-                );
-              }
-            )}
-        </SectionView>
+        <>
+          {recommendationResults.length > 0 && (
+            <SectionView
+              title="Recommandation"
+              viewMore={recommendationViewMore}
+              viewLess={recommendationViewLess}
+              limit={recommendationLimit}
+              length={recommendationResults.length}
+            >
+              {recommendationResults
+                .slice(0, recommendationLimit)
+                .map(
+                  (
+                    { id, title, vote_average, poster_path, release_date },
+                    index
+                  ) => {
+                    return (
+                      <MovieCard
+                        id={id}
+                        title={title}
+                        vote_average={vote_average}
+                        poster_path={poster_path}
+                        release_date={release_date}
+                        key={index}
+                        imageUrl={imageUrl}
+                      />
+                    );
+                  }
+                )}
+            </SectionView>
+          )}
+        </>
       ) : (
         <SectionViewSkeleton title="Recommandation" />
       )}

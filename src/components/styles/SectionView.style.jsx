@@ -5,7 +5,7 @@ const { primary, light } = theme;
 
 export const StyledSection = styled.section`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 20px;
@@ -44,11 +44,5 @@ export const ViewButton = styled.button`
   }
   &:hover {
     color: ${primary};
-  }
-  :disabled,
-  [disabled] {
-    border: 1px solid #999999;
-    background-color: #cccccc;
-    color: #666666;
   }
 `;

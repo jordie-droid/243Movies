@@ -24,6 +24,7 @@ export const ButtonPagination = styled.button`
   color: ${light};
   cursor: pointer;
   transition: 1s;
+  font-size: 1.3rem;
   &:focus {
     outline: none;
   }

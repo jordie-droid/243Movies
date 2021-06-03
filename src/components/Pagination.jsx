@@ -1,3 +1,5 @@
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   ButtonPagination,
   PaginationContainer,
@@ -6,11 +8,15 @@ import {
 const Pagination = ({ currentPage, prevPage, nextPage, totalPages }) => {
   return (
     <PaginationContainer>
-      <ButtonPagination onClick={prevPage}>Précédente</ButtonPagination>
+      <ButtonPagination onClick={prevPage}>
+        <FontAwesomeIcon icon={faArrowLeft} />
+      </ButtonPagination>
       <p>
-        {currentPage} sur {totalPages}
+        {currentPage} / {totalPages}
       </p>
-      <ButtonPagination onClick={nextPage}>Suivante</ButtonPagination>
+      <ButtonPagination onClick={nextPage}>
+        <FontAwesomeIcon icon={faArrowRight} />
+      </ButtonPagination>
     </PaginationContainer>
   );
 };

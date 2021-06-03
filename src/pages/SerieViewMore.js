@@ -103,58 +103,70 @@ const SerieViewMore = ({ imageUrl }) => {
           </Overview>
         </AboutMovie>
       </MainContainer>
-      <SectionView
-        title="Séries similaires"
-        viewMore={similarSeriesViewMore}
-        viewLess={similarSeriesViewLess}
-      >
-        {similarSeriesResults
-          .slice(0, similarSeriesLimit)
-          .map(
-            (
-              { id, name, vote_average, poster_path, first_air_date },
-              index
-            ) => {
-              return (
-                <SerieCard
-                  id={id}
-                  title={name}
-                  vote_average={vote_average}
-                  poster_path={poster_path}
-                  release_date={first_air_date}
-                  key={index}
-                  imageUrl={imageUrl}
-                />
-              );
-            }
-          )}
-      </SectionView>
-      <SectionView
-        title="Recommandation"
-        viewMore={recommendationViewMore}
-        viewLess={recommendationViewLess}
-      >
-        {recommendationResults
-          .slice(0, recommendationLimit)
-          .map(
-            (
-              { id, name, vote_average, poster_path, first_air_date },
-              index
-            ) => {
-              return (
-                <SerieCard
-                  id={id}
-                  title={name}
-                  vote_average={vote_average}
-                  poster_path={poster_path}
-                  release_date={first_air_date}
-                  key={index}
-                  imageUrl={imageUrl}
-                />
-              );
-            }
-          )}
-      </SectionView>
+      {similarSeriesResults.length > 0 && (
+        <>
+          <SectionView
+            title="Séries similaires"
+            viewMore={similarSeriesViewMore}
+            viewLess={similarSeriesViewLess}
+            limit={similarSeriesLimit}
+            length={similarSeriesResults.length}
+          >
+            {similarSeriesResults
+              .slice(0, similarSeriesLimit)
+              .map(
+                (
+                  { id, name, vote_average, poster_path, first_air_date },
+                  index
+                ) => {
+                  return (
+                    <SerieCard
+                      id={id}
+                      title={name}
+                      vote_average={vote_average}
+                      poster_path={poster_path}
+                      release_date={first_air_date}
+                      key={index}
+                      imageUrl={imageUrl}
+                    />
+                  );
+                }
+              )}
+          </SectionView>
+        </>
+      )}
+      {recommendationResults.length > 0 && (
+        <>
+          <SectionView
+            title="Recommandation"
+            viewMore={recommendationViewMore}
+            viewLess={recommendationViewLess}
+            limit={recommendationLimit}
+            length={recommendationResults.length}
+          >
+            {recommendationResults
+              .slice(0, recommendationLimit)
+              .map(
+                (
+                  { id, name, vote_average, poster_path, first_air_date },
+                  index
+                ) => {
+                  return (
+                    <SerieCard
+                      id={id}
+                      title={name}
+                      vote_average={vote_average}
+                      poster_path={poster_path}
+                      release_date={first_air_date}
+                      key={index}
+                      imageUrl={imageUrl}
+                    />
+                  );
+                }
+              )}
+          </SectionView>
+        </>
+      )}
       <Modal
         show={show}
         onHide={closeModal}
