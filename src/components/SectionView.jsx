@@ -25,7 +25,7 @@ const SectionView = ({
         </ViewButton>
         <ViewButton onClick={viewMore}>
           <FontAwesomeIcon icon={faPlus} />
-        </ViewButton>
+        </ViewButto>
       </ButtonContainer>
     </MainContainer>
   );
