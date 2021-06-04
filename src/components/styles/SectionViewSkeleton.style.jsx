@@ -14,7 +14,7 @@ const scrollAnimationCard = keyframes`
 
 export const StyledSection = styled.section`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   padding: 20px;
@@ -48,6 +48,7 @@ export const Card = styled.div`
   border: solid 2px ${light};
   border-radius: 20px 0 20px 0;
   overflow: hidden;
+  margin: 10px;
   div {
     width: 100%;
     height: 100%;

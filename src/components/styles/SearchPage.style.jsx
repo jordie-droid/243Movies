@@ -5,6 +5,7 @@ const { light, primary } = theme;
 
 export const MainContainer = styled.div`
   margin-top: 70px;
+  padding: 20px 0 0;
   color: ${light};
   h1 {
     color: ${light};
