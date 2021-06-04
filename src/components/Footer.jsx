@@ -29,8 +29,8 @@ const FooterPage = () => {
           +243movies est un site de présentation des films. Nous sommes là pour
           vous aider à trouver rapidement les informations sur les films, séries
           et célébrités. Nous avons le plaisir de consommer l'API de
-          <strong>The movies database</strong> qui est une base de données riche
-          contenant la majorité des informations que vous cherchez.
+          <strong> The movies database</strong> qui est une base de données
+          riche contenant la majorité des informations que vous cherchez.
         </p>
       </Description>
       <CopyRight>Copy Right 2021 by Jordie Lutundula</CopyRight>
