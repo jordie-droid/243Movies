@@ -8,18 +8,6 @@ const FadeCarousel = ({ imageUrl }) => {
 
   const [data] = useMovies(1, all);
 
-  const showCarousel = () => {
-    return data ? (
-      data.results.slice(0, 4).map(({ id, backdrop_path, title }) => {
-        return showImages(id, backdrop_path, title);
-      })
-    ) : (
-      <>
-        <CarouselSkeleton />
-      </>
-    );
-  };
-
   const showImages = (id, backdrop_path, title) => {
     return (
       <Carousel.Item key={id} className="h20vh">
@@ -29,12 +17,24 @@ const FadeCarousel = ({ imageUrl }) => {
           alt={title}
         />
         <Carousel.Caption className="slider-caption">
-          <h5>
+          <h1>
             Bienvenue. Trouvez rapidement les informations sur les films que
             vous cherchez. N'hesitez pas, explorez maintenant !
-          </h5>
+          </h1>
         </Carousel.Caption>
       </Carousel.Item>
+    );
+  };
+
+  const showCarousel = () => {
+    return data ? (
+      data.results.slice(0, 4).map(({ id, backdrop_path, title }) => {
+        return showImages(id, backdrop_path, title);
+      })
+    ) : (
+      <>
+        <CarouselSkeleton />
+      </>
     );
   };
 
