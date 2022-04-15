@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { useHistory } from "react-router";
+import {Wrapper} from "./styles/Header.style";
 
 const Header = () => {
   const [hideMenu, setHideMenu] = useState(true);
@@ -18,7 +19,7 @@ const Header = () => {
     history.push(`/search/${keyWord}`);
   };
   return (
-    <div className="header">
+    <Wrapper>
       <div className="header__left-side">
         <div className="logo">
           <button
@@ -32,9 +33,7 @@ const Header = () => {
               <FontAwesomeIcon icon={faTimes} />
             )}
           </button>
-          <Link url="/">
-            <img src={logo} alt="logo du site" className="image" />
-          </Link>
+          <Link url="/">+243 Movies</Link>
         </div>
         <ul className="menu" id={hideMenu ? "menu-hidden" : "menu-visible"}>
           <li>
@@ -63,7 +62,7 @@ const Header = () => {
         <div className="header__right-side">
           <input
             type="text"
-            placeholder="Tapez un mot"
+            placeholder="Rerchercher"
             value={keyWord || ""}
             onChange={({ target: { value } }) => {
               setKeyWord(value);
@@ -72,7 +71,7 @@ const Header = () => {
           <button onClick={goToSearch}>Rechercher</button>
         </div>
       </form>
-    </div>
+    </Wrapper>
   );
 };
 
