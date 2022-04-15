@@ -82,7 +82,7 @@ export const Wrapper = styled.div`
           padding: 5px 10px;
           font-size: 1em;
           :hover {
-              color: #f1a111;
+              color: #ffffff;
           }
       }
   }

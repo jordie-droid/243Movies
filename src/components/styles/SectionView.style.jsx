@@ -4,6 +4,7 @@ import theme from "../../theme";
 const { primary, light } = theme;
 
 export const StyledSection = styled.section`
+  background-color:transparent;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -10,7 +10,7 @@ const FadeCarousel = ({ imageUrl }) => {
 
   const showImages = (id, backdrop_path, title) => {
     return (
-      <Carousel.Item key={id} className="h20vh">
+      data && <Carousel.Item key={id} className="h20vh">
         <img
           className="d-block w-100"
           src={`${imageUrl}${backdrop_path}`}

@@ -4,11 +4,9 @@ import "./css/index.css";
 import Footer from "./components/Footer";
 import Router from "./Router";
 
-const App = () => {
+const App = () => {  
   return (
-    <>
       <Router Header={<Header />} Footer={<Footer />} />
-    </>
   );
 };
 
