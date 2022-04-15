@@ -51,7 +51,7 @@ const Home = ({ imageUrl }) => {
     <>
       {window.scrollTo(0, 0)}
       
-      <Background movie={data && data.results[0]} imageUrl={imageUrl}>
+      <Background movie={data && data.results[1]} imageUrl={imageUrl}>
         {/* <FadeCarousel imageUrl={imageUrl} /> */}
         {popularMoviesData ? (
           <>
